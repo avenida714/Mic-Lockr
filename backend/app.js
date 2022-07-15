@@ -1,6 +1,6 @@
 //backend
 const express = require('express');
-const routes = require('./routes');
+const router = require('./routes');
 const morgan = require('morgan');
 const cors = require('cors');
 const csurf = require('csurf');
@@ -42,7 +42,8 @@ app.use(
   })
 );
 
-app.use(routes); //connect all the routes
+app.use(router); //connect all the routes
+
 
 
 
