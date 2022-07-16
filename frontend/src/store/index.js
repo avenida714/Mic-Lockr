@@ -3,9 +3,15 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
+//PHASE 1 LOGIN FORM PAGE
+
+import sessionReducer from './session';
+
 const rootReducer = combineReducers({
-  //ALL REDUCERS GO HERE
+  session: sessionReducer,
 });
+
+
 
 let enhancer;
 

@@ -12,18 +12,28 @@ import { restoreCSRF, csrfFetch } from './store/csrf';
 
 import configureStore from './store';
 
-const store = configureStore();
+import * as sessionActions from './store/session';
 
-if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
-}
+const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
   restoreCSRF();
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
+
+// if (process.env.NODE_ENV !== 'production') {
+//   window.store = store;
+// }
+
+// if (process.env.NODE_ENV !== 'production') {
+//   restoreCSRF();
+
+//   window.csrfFetch = csrfFetch;
+//   window.store = store;
+// }
 
 function Root() {
   return (
