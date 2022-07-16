@@ -23,3 +23,7 @@ const configureStore = (preloadedState) => {
 };
 
 export default configureStore;
+
+/**NOTE before phase1 of part 2 frontend:
+"You can now remove the POST /api/test test route in your backend code, as you won't be needing it anymore."   -- what is this?
+ */
