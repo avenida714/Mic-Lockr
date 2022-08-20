@@ -1,5 +1,6 @@
-'use strict';
 
+
+'use strict';
 
 const { Validator } = require('sequelize');
 

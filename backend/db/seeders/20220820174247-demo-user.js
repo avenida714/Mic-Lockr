@@ -1,4 +1,5 @@
-
+// generate a user seeder file with this:
+// npx sequelize seed:generate --name demo-user
 // migrate seed file with this:
 // npx dotenv sequelize db:seed:all
 
