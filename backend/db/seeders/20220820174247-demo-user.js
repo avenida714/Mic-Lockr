@@ -1,3 +1,7 @@
+
+// migrate seed file with this:
+// npx dotenv sequelize db:seed:all
+
 'use strict';
 const bcrypt = require('bcryptjs');
 
