@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Mics.associate = function(models) {
     Mics.belongsTo(models.User, {foreignKey: 'userId'})
-    Mics.hasMany(models.Comment, { foreignKey: 'pictureId'})
+    // Mics.hasMany(models.Comment, { foreignKey: 'pictureId'})
   };
   return Mics;
 };
