@@ -1,3 +1,5 @@
+//MICS
+
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -22,15 +24,18 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING(255)
+        type: Sequelize.STRING(255),
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
