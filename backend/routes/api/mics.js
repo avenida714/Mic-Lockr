@@ -53,7 +53,7 @@ router.get('/:id', asyncHandler(async function (req, res) {
   });
 }));
 
-//edit a mic photo
+//edit a mic image
 router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req, res) {
   const micPhotoId = parseInt(req.params.id, 10);
 
@@ -65,7 +65,7 @@ router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req,
     description,
   } = req.body
 
-  const targetedMicPhoto = await db.Mic.findByPk(id)
+  const targetedMicPhoto = await db.Mic.findByPk(id) //search database for spec mic by its primary key/id
 
   const editedMicPhoto = targetedMicPhoto.update(
     {
@@ -76,6 +76,15 @@ router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req,
       description,
     })
     return res.json(editedMicPhoto)
+}))
+
+
+//delete a mic photo
+
+router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
+  const deletedMicPhoto = await db.Mic.findByPk(req.body.id)  //search db for specific mic photo by its primary key/ id
+  await deletedMicPhoto.destroy();
+  return res.json(req.body.id)
 }))
 
 
