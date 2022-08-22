@@ -15,6 +15,14 @@ const validateComment = [
   handleValidationErrors
 ]
 
+//get all the comments of a mic
+router.get('/:micId', asyncHandler(async function (req, res) {
+  const micId = req.params.micId;
+  const micComments = await db.Comment.findAll({where: {micId}})
+  return res.json(micComments)
+}))
+
+//create a comment
 router.post('/', validateComment, requireAuth, asyncHandler(async function(req, res) {
   const {userId, micId, body} = req.body
 
@@ -29,6 +37,9 @@ router.post('/', validateComment, requireAuth, asyncHandler(async function(req, 
   return res.json(userNewComment)
 }))
 
+
+
+//update or edit a comment
 router.put('/', requireAuth, validateComment, asyncHandler(async function (req, res) {
   const {comment} = req.body;
   const editComment = await db.Comment.findByPk(comment.id)
