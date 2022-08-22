@@ -11,7 +11,7 @@ const micValidation = [
     .withMessage('Please give us a valid image URL.')
     .isLength({max:255})
     .withMessage('The max length for your URL should not exceed 255 characters, please.')
-    .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi)
+    .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
     .withMessage('This image link is not valid; Please provide a valid image link.'),
   check('title')
     .exists({checkFalsy: true})
@@ -23,3 +23,10 @@ const micValidation = [
     .isLength({max: 255})
     .withMessage('No need to write a novel; keep it fewer than 255 characters, please')
 ]
+
+
+//get all the mic images
+router.get('/', asyncHandler(async function (req, res) {
+  const micImages = await db.Mic.findAll(); //in models, singular capitalized
+  return res.json(micImages)
+}))
