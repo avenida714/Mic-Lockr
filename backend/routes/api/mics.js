@@ -51,6 +51,7 @@ router.get('/:id', asyncHandler(async function (req, res) {
   const mic = await db.Mic.findOne({
     where: { id: micId }
   });
+  return res.json(mic)
 }));
 
 //edit a mic image
