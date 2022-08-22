@@ -1,16 +1,16 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Mics = sequelize.define('Mics', {
+  const Mic = sequelize.define('Mic', {
     userId: DataTypes.INTEGER,
     imageURL: DataTypes.STRING,
     title: DataTypes.STRING,
     description: DataTypes.STRING
   }, {});
-  Mics.associate = function(models) {
-    Mics.belongsTo(models.User, {foreignKey: 'userId'})
+  Mic.associate = function(models) {
+    Mic.belongsTo(models.User, {foreignKey: 'userId'})
     // Mics.hasMany(models.Comment, { foreignKey: 'pictureId'})
   };
-  return Mics;
+  return Mic;
 };
 
 
