@@ -27,6 +27,16 @@ const micValidation = [
 
 //get all the mic images
 router.get('/', asyncHandler(async function (req, res) {
-  const micImages = await db.Mic.findAll(); //in models, singular capitalized
+  const micImages = await db.Mic.findAll({//in models, singular capitalized
+    order: [
+      ["createdAt", "DESC"],
+    ],
+    include: 'User'
+  });
+
   return res.json(micImages)
 }))
+
+
+
+module.exports = router;
