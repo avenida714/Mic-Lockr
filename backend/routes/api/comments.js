@@ -47,3 +47,9 @@ router.put('/', requireAuth, validateComment, asyncHandler(async function (req, 
 
   return res.json(updatedComment)
 }))
+
+router.delete('/', requireAuth, asyncHandler(async function (req, res) {
+  const commentForDelete = await db.Comment.findbyPk(req.body.id)
+  await commentForDelete.destroy();
+  return res.json(req.body.id)
+}))
