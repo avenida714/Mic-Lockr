@@ -149,15 +149,15 @@ module.exports = {
       },
       {
         userId: 1,
-        imageURL: '',
+        imageURL: 'https://www.mixonline.com/wp-content/uploads/2019/09/2019-09-23-vanguard1.jpg',
         title: 'vanguard-v1-pair',
-        description: '',
+        description: 'Matched Pair of Vanguard V1 Pencil Microphones With Lolli Heads',
       },
       {
-        userId: '',
-        imageURL: '',
+        userId: 1,
+        imageURL: 'https://mojaveaudio.com/wp-content/uploads/2021/11/new-mic-colors-w-MA37mic-banner.jpg',
         title: 'mojave-condensers',
-        description: '',
+        description: 'Collection of Mojave Microphones',
       },
     ], {});
   },
