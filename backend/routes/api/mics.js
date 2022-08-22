@@ -1,9 +1,16 @@
+//routes/api/mics
+
 const express = require('express');
+
 const asyncHandler = require('express-async-handler');
 const db = require('../../db/models');
+
 const router = express.Router();
-const { check} = require('express-validator');
+
+const { check } = require('express-validator');
+
 const { handleValidationErrors } = require('../../utils/validation');
+const { requireAuth } = require('../../utils/auth');
 
 const micValidation = [
   check('imageURL')
@@ -21,12 +28,13 @@ const micValidation = [
     .exists({checkFalsy: true})
     .withMessage("Don't be shy, please write a description.")
     .isLength({max: 255})
-    .withMessage('No need to write a novel; keep it fewer than 255 characters, please')
-]
+    .withMessage('No need to write a novel; keep it fewer than 255 characters, please'),
+    handleValidationErrors
+];
 
 
 //get all the mic images
-router.get('/', asyncHandler(async function (req, res) {
+router.get('/', asyncHandler(async function (req, res) {  // actual route path  '/'
   const micImages = await db.Mic.findAll({//in models, singular capitalized
     order: [
       ["createdAt", "DESC"],
@@ -35,7 +43,42 @@ router.get('/', asyncHandler(async function (req, res) {
   });
 
   return res.json(micImages)
+}));
+
+//get one mic only
+router.get('/:id', asyncHandler(async function (req, res) {
+  const micId = parseInt(req.params.id, 10)
+  const mic = await db.Mic.findOne({
+    where: { id: micId }
+  });
+}));
+
+//edit a mic photo
+router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req, res) {
+  const micPhotoId = parseInt(req.params.id, 10);
+
+  const {
+    id,
+    userId,
+    imageURL,
+    title,
+    description,
+  } = req.body
+
+  const targetedMicPhoto = await db.Mic.findByPk(id)
+
+  const editedMicPhoto = targetedMicPhoto.update(
+    {
+      id,
+      userId,
+      imageURL,
+      title,
+      description,
+    })
+    return res.json(editedMicPhoto)
 }))
+
+
 
 
 
