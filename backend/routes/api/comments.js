@@ -28,3 +28,11 @@ router.post('/', validateComment, requireAuth, asyncHandler(async function(req, 
 
   return res.json(userNewComment)
 }))
+
+router.put('/', requireAuth, validateComment, asyncHandler(async function (req, res) {
+  const {comment} = req.body;
+  const editComment = await db.Comment.findByPk(comment.id)
+  const updatedComment = await editComment.update({comment})
+
+  return res.json(updatedComment)
+}))
