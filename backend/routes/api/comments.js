@@ -4,6 +4,9 @@ const db = require('../../db/models')
 const {handleValidationErrors} = require('../../utils/validation')
 const { check } = require('express-validator')
 const {requireAuth} = require('../../utils/auth')
+const asyncHandler = require('express-async-handler');
+
+
 
 
 const validateComment = [
