@@ -53,3 +53,6 @@ router.delete('/', requireAuth, asyncHandler(async function (req, res) {
   await commentForDelete.destroy();
   return res.json(req.body.id)
 }))
+
+
+module.exports = router
