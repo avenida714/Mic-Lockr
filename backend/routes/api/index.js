@@ -12,8 +12,10 @@ router.use('/users', usersRouter);
 
 router.use('/mics', micsRouter)
 
-router.post('/test', (req, res) => {
-  res.json({ requestBody: req.body });
-});
+// router.post('/test', (req, res) => {  from authMe, used for testing
+//   res.json({ requestBody: req.body });
+// });
+
+
 
 module.exports = router;

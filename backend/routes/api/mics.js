@@ -33,7 +33,7 @@ const micValidation = [
 ];
 
 
-//get all the mic images
+// get all the mic images
 router.get('/', asyncHandler(async function (req, res) {  // actual route path  '/'
   const micImages = await db.Mic.findAll({//in models, singular capitalized
     order: [
