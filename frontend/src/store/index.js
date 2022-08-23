@@ -8,6 +8,8 @@ import micReducer from './mics';
 
 import sessionReducer from './session';
 
+
+// DON'T FORGET TO INCLUDE THE REDUCERS ONCE YOU HAVE FINISHED THEM
 const rootReducer = combineReducers({
   session: sessionReducer,
   mics: micReducer
