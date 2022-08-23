@@ -43,3 +43,5 @@ function App() {
 }
 
 export default App;
+
+/**heroku restart && heroku pg:reset DATABASE --confirm mic-lockr && heroku run npm run sequelize db:migrate && heroku run npm run sequelize db:seed:all */

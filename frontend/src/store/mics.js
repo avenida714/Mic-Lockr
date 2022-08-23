@@ -4,12 +4,25 @@ import {csrfFetch} from './csrf'
 
 const LOAD_MICS = 'mics/LOAD'
 
+const ADD_MIC = 'mics/ADD'  // bananable, disregard backend names
+
 //regularr action creator to load mics
 export const loadMics = (mics) => {
   return {type: LOAD_MICS,
   mics
 }
 }
+
+//ac for add mic
+export const addMic = (mic) => {
+  return {
+    type: ADD_MIC,
+    mic
+  }
+}
+
+
+
 
 //thunc action creator for fetching all the mics (this is the action)
 export const fetchMics = () => async dispatch => {

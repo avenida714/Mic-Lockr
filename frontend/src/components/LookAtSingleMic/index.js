@@ -1,4 +1,4 @@
-//viewAndEditMic component
+//lookAtSingleMic component
 
 import React from 'react'
 import { useEffect } from 'react';
@@ -8,7 +8,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import { fetchMics } from "../../store/mics";
 
 
-// let's make this rando change
 
 function LookAtSingleMic() {
 
