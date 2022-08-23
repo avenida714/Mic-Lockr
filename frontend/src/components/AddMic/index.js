@@ -15,8 +15,9 @@ function AddMic() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [imageURL, setImageURL] = useState('')
+  const [errors, setErrors] = useState([])
 
-  const
+
 
 
   return (
