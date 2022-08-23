@@ -6,6 +6,8 @@ import { fetchMics } from "../../store/mics";
 // import { useState } from "react";
 // import { useHistory } from "react-router-dom";
 
+import './mics.css'
+
 function Mics() {
 
   const dispatch = useDispatch();
@@ -45,16 +47,21 @@ function Mics() {
 
 if (personLoggedIn) {
   return (
-    <div>
-    {micLockrMics.map((micObj) => {
+    <>
+      <span>
+      {micLockrMics.map((micObj) => {
       return (
-        <div key={micObj.id}>
+        <span className={"outerDiv"}>
+        <span className={"img-holder"} key={micObj.id}>
           <img src={micObj.imageURL} alt={micObj.title}></img>
-          <div>The mics</div>
-        </div>
+          <h2>{micObj.title}</h2>
+        </span>
+        </span>
       )
     })}
-  </div>
+      </span>
+
+  </>
   )
 }
 
