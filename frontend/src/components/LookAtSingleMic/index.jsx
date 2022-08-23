@@ -31,9 +31,9 @@ useEffect(() => {
   return (
     <>
       <span>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title}></img>
+      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} onClick={() => history.goBack()}></img>
     </span>
-    <button onClick={() => history.goBack()}>Back</button>
+    {/* <button onClick={() => history.goBack()}>Back</button> */}
     </>
 
   )
