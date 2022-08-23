@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { fetchMics } from "../../store/mics";
 // import { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import './mics.css'
 
@@ -16,7 +16,7 @@ function Mics() {
     dispatch(fetchMics())
   }, [dispatch])
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const personLoggedIn = useSelector((state) => {
     return state.session.user;
@@ -48,18 +48,17 @@ function Mics() {
 if (personLoggedIn) {
   return (
     <>
-      <span>
+      <card>
       {micLockrMics.map((micObj) => {
       return (
-        <span className={"outerDiv"}>
+        <span className={"outerSpan"}>
         <span className={"img-holder"} key={micObj.id}>
-          <img src={micObj.imageURL} alt={micObj.title}></img>
-          <h2>{micObj.title}</h2>
+          <img src={micObj.imageURL} alt={micObj.title} onClick={() => history.pushState(`/mics/${micObj.id}`)}></img>
         </span>
         </span>
       )
     })}
-      </span>
+      </card>
 
   </>
   )

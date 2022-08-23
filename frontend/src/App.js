@@ -2,11 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+
+//components
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Mics from "./components/Mics";
+import LookAtSingleMic from "./components/LookAtSingleMic";
 
-import Mics from "./components/mics";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +32,9 @@ function App() {
           </Route>
           <Route exact path='/'>
            {sessionUser ? <Mics /> : null}
+          </Route>
+          <Route exact path='/mics/:micId'>
+            <LookAtSingleMic />
           </Route>
         </Switch>
       )}
