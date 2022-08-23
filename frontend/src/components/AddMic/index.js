@@ -48,7 +48,32 @@ function AddMic() {
 
 
   return (
-    <div>AddMic</div>
+    <>
+    <form onSubmit={e => handleSubmit(e)}>
+      <ul>
+        {errors.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
+      <label>Mic Image URL</label>
+      <input
+        name="imageURL"
+        type="text"
+        value={imageURL}
+        onChange={e => setImageURL(e.target.value)}
+        placeholder="Paste the URL of your mic here..."
+      />
+      <label>Title:</label>
+      <input
+        name="title"
+        type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        placeholder="What microphone is it...?"
+      />
+
+
+    </form>
+
+    </>
   )
 }
 
