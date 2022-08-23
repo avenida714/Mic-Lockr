@@ -8,6 +8,8 @@ import { useHistory, useParams } from 'react-router-dom';
 import { fetchMics } from "../../store/mics";
 
 
+// let's make this rando change
+
 function LookAtSingleMic() {
 
   const micId = useParams().micId;
