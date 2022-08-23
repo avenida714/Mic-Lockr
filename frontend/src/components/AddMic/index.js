@@ -53,7 +53,7 @@ function AddMic() {
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
-      <label>Mic Image URL</label>
+      <label>Mic Image URL:</label>
       <input
         name="imageURL"
         type="text"
@@ -69,8 +69,16 @@ function AddMic() {
         onChange={e => setTitle(e.target.value)}
         placeholder="What microphone is it...?"
       />
-
-
+      <label>Description:</label>
+      <input
+        name="description"
+        type="text"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        placeholder="Tell us about this mic."
+      />
+      <button type="submit">Add Mic to the Lockr</button>
+      <button onClick={() => (history.push('/'))}>Cancel</button>
     </form>
 
     </>
