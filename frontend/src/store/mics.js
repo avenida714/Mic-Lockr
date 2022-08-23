@@ -1,8 +1,10 @@
+// store/mics.js
+
 import {csrfFetch} from './csrf'
 
 const LOAD_MICS = 'mics/LOAD'
 
-//regulr action creator to load mics
+//regularr action creator to load mics
 export const loadMics = (mics) => {
   return {
     type: LOAD_MICS,
@@ -34,26 +36,30 @@ export const createMic = (mic) => async dispatch => {
 
 
 
-
-
-
-
-
-
 //REDUCER
 
 const micReducer = (state = {}, action) => {
   switch(action.type) {
-    case LOAD_MICS: {
-      const loadTheMicLockr = {}
+    case LOAD_MICS:
+      const loadTheMicLockr = {};
       action.mics.forEach(mic => {
         loadTheMicLockr[mic.id] = mic
       })
+      console.log(loadTheMicLockr)
       return loadTheMicLockr
-    }
+
     default:
       return state;
   }
 }
+/**
+const pictureReducer = (state = {}, action) => {
+    switch (action.type) {
+        case LOAD_PICTURES:
+            const allPictures = {};
+            action.list.forEach(picture => {
+                allPictures[picture.id] = picture;
+            });
+            return allPictures */
 
 export default micReducer;
