@@ -36,7 +36,7 @@ function Mics() {
   }
 
 
-  console.log('these are the mics ------->', micLockrMics)
+  // console.log('these are the mics ------->', micLockrMics)
 
   // const micsArr = [...mics]
 
@@ -48,17 +48,17 @@ function Mics() {
 if (personLoggedIn) {
   return (
     <>
-      <card>
+      <span>
       {micLockrMics.map((micObj) => {
       return (
-        <span className={"outerSpan"}>
+        <span className={"outerSpan"} key={micObj.id}>
         <span className={"img-holder"} key={micObj.id}>
-          <img src={micObj.imageURL} alt={micObj.title} onClick={() => history.pushState(`/mics/${micObj.id}`)}></img>
+          <img src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
         </span>
         </span>
       )
     })}
-      </card>
+      </span>
 
   </>
   )
