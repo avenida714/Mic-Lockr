@@ -6,8 +6,12 @@ import { fetchMics } from "../../store/mics";
 function Mics() {
 
   const dispatch = useDispatch();
+
+
   const mics = useSelector(state => {
-    Object.values(state.mics)
+    if (state.mics) {
+      Object.values(state.mics)
+    }
   })
 
   useEffect(() => {

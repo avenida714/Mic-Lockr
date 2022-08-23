@@ -10,6 +10,7 @@ export const loadMics = (mics) => {
   };
 };
 
+
 //thunc action creator for fetching all the mics (this is the action)
 export const fetchMics = () => async dispatch => {
   const response = await csrfFetch('/api/mics/')
@@ -19,6 +20,25 @@ export const fetchMics = () => async dispatch => {
     return mics;
   }
 }
+
+export const createMic = (mic) => async dispatch => {
+  const res = await csrfFetch('/api/mics', {
+    method: 'POST',
+    body: JSON.stringify(mic)
+  })
+
+  if (res.ok) {
+
+  }
+}
+
+
+
+
+
+
+
+
 
 //REDUCER
 
