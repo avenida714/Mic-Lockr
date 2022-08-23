@@ -4,7 +4,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { fetchMics } from "../../store/mics";
 // import { useState } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+import './mics.css'
 
 function Mics() {
 
@@ -14,7 +16,7 @@ function Mics() {
     dispatch(fetchMics())
   }, [dispatch])
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const personLoggedIn = useSelector((state) => {
     return state.session.user;
@@ -34,7 +36,7 @@ function Mics() {
   }
 
 
-  console.log('these are the mics ------->', micLockrMics)
+  // console.log('these are the mics ------->', micLockrMics)
 
   // const micsArr = [...mics]
 
@@ -45,16 +47,20 @@ function Mics() {
 
 if (personLoggedIn) {
   return (
-    <div>
-    {micLockrMics.map((micObj) => {
+    <>
+      <span>
+      {micLockrMics.map((micObj) => {
       return (
-        <div key={micObj.id}>
-          <img src={micObj.imageURL} alt={micObj.title}></img>
-          <div>The mics</div>
-        </div>
+        <span className={"outerSpan"} key={micObj.id}>
+        <span className={"img-holder"} key={micObj.id}>
+          <img src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
+        </span>
+        </span>
       )
     })}
-  </div>
+      </span>
+
+  </>
   )
 }
 
