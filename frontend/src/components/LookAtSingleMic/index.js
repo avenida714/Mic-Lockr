@@ -15,11 +15,14 @@ function LookAtSingleMic() {
   const micId = useParams().micId;
   const dispatch = useDispatch();
   const mics = useSelector(state => state.mics)
-  const currentlyViewingThisMic = mics[micId]
 
+  const currentlyViewingThisMic = mics[micId]
+  // console.log('this is the mic ------> ',currentlyViewingThisMic)
+
+  const personLoggedIn = useSelector(state => state.session.user)
+  // console.log('this is the user logged in ------>', personLoggedIn)
   const history = useHistory()
 
-  // console.log(currentlyViewingThisMic)
 
 
 useEffect(() => {
@@ -32,6 +35,15 @@ const deleteThisMic = function (micForDestruction){
     .then(() => history.push('/'))
 
 }
+let deleteButton;
+
+if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
+  deleteButton = (<button onClick={() => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
+} else {
+  deleteButton = null
+}
+
+// console.log(deleteButton)
 
 
   return (
@@ -39,8 +51,7 @@ const deleteThisMic = function (micForDestruction){
       <span>
       <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} onClick={() => history.goBack()}></img>
     </span>
-    <button onClick={() => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button>
-
+    {deleteButton}
     </>
 
   )
