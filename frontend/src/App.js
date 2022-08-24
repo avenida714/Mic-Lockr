@@ -10,6 +10,7 @@ import Navigation from "./components/Navigation";
 import Mics from "./components/Mics";
 import LookAtSingleMic from "./components/LookAtSingleMic";
 import AddMic from "./components/AddMic";
+import UpdateMic from "./components/UpdateMic";
 
 
 
@@ -37,9 +38,13 @@ function App() {
           <Route exact path='/mics/create'>
             {personLoggedIn ? <AddMic /> : <SignupFormPage />}
           </Route>
+          <Route exact path='/mics/:micId/edit'>
+            <UpdateMic />
+          </Route>
           <Route exact path='/mics/:micId'>
             <LookAtSingleMic />
           </Route>
+
         </Switch>
       )}
     </>

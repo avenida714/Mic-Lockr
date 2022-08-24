@@ -51,7 +51,7 @@ router.get('/:id', asyncHandler(async function (req, res) {
 
 //edit a mic image
 router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req, res) {
-  const micPhotoId = parseInt(req.params.id, 10);
+  // const micPhotoId = parseInt(req.params.id, 10);   // using parseInt to get the actual ID of the micPhoto; not necessary because the id will come from the front end
 
   const {
     id,
