@@ -36,15 +36,6 @@ function Mics() {
   }
 
 
-  // console.log('these are the mics ------->', micLockrMics)
-
-  // const micsArr = [...mics]
-
-
-
-      //THIS DISPATCHES AND GETS THE MICS ARR
-
-
 if (personLoggedIn) {
   return (
     <>
