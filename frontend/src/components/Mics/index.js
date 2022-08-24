@@ -29,11 +29,21 @@ function Mics() {
 
   let micLockrMics
 
-
-
   if (mics) {
    micLockrMics = Object.values(mics)
   }
+
+
+
+  let createButton;
+
+  if (personLoggedIn) {
+    createButton = (<button onClick={() => history.push('/mics/create'
+    )}>Add A Mic To the Lockr</button>)
+  } else {
+    createButton = null;
+  }
+
 
 
 if (personLoggedIn) {
@@ -42,13 +52,15 @@ if (personLoggedIn) {
       <span>
       {micLockrMics.map((micObj) => {
       return (
-        <span className={"outerSpan"} key={micObj.id}>
-        <span className={"img-holder"} key={micObj.id}>
-          <img src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
+        <span className="outerSpan" key={micObj.id}>
+        <span className="img-holder" key={micObj.id}>
+          <img className="micImages" src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
         </span>
         </span>
       )
     })}
+      {createButton}
+
       </span>
 
   </>

@@ -57,7 +57,7 @@ app.use((_req, _res, next) => {
   next(err);
 });
 
-// Process sequelize errors
+// Process sequelize errors error formatter
 app.use((err, _req, _res, next) => {
   // check if error is a Sequelize error:
   if (err instanceof ValidationError) {
@@ -69,6 +69,7 @@ app.use((err, _req, _res, next) => {
 
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500);
+  console.log("-------~~~~~~~~~ THIS IS THE ERROR -------~~~~~~~~~ -------->", err.message)
   console.error(err);
   res.json({
     title: err.title || 'Server Error',

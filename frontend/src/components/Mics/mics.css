@@ -31,8 +31,9 @@ h3 {
   height: 20%;
 }
 
-img {
-  width: 80%;
+.micImages {
+  /* width: 400px; */
+  height: 400px;
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;

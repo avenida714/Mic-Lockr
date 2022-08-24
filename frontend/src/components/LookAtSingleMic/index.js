@@ -12,14 +12,18 @@ import { destroyMicThunk } from '../../store/mics';
 
 function LookAtSingleMic() {
 
+
   const micId = useParams().micId;
   const dispatch = useDispatch();
   const mics = useSelector(state => state.mics)
-  const currentlyViewingThisMic = mics[micId]
 
+  const currentlyViewingThisMic = mics[micId]
+  // console.log('this is the mic ------> ',currentlyViewingThisMic)
+
+  const personLoggedIn = useSelector(state => state.session.user)
+  // console.log('this is the user logged in ------>', personLoggedIn)
   const history = useHistory()
 
-  // console.log(currentlyViewingThisMic)
 
 
 useEffect(() => {
@@ -27,20 +31,42 @@ useEffect(() => {
 }, [dispatch])
 
 
-const deleteThisMic = function (micForDestruction){
-  dispatch(destroyMicThunk(micForDestruction))
-    .then(() => history.push('/'))
 
+// const deleteThisMic = function (micForDestruction){
+//   dispatch(destroyMicThunk(micForDestruction))
+// }
+
+const deleteThisMic = async function (micForDestruction){
+  const micGettingTotallyDestroyed = await dispatch(destroyMicThunk(micForDestruction))
+  if (micGettingTotallyDestroyed) {
+  history.goBack(2)
+  }
 }
+
+//Delete button logic -------------
+let deleteButton;
+
+if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
+  deleteButton = (<button onClick={
+    () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
+  } else {
+    deleteButton = null
+  }
+
+  //if (window.confirm('Are you sure you wish to delete this item?'))
+// {currentlyViewingThisMic.userId === personLoggedIn.id ? <button onClick={
+//   () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> : null}
+
 
 
   return (
     <>
       <span>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} onClick={() => history.goBack()}></img>
+      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.goBack()}></img>
+      <h1>{currentlyViewingThisMic.title}</h1>
+      <h2>{currentlyViewingThisMic.description}</h2>
     </span>
-    <button onClick={() => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button>
-
+    {deleteButton}
     </>
 
   )
