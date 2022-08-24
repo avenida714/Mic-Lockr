@@ -42,7 +42,9 @@ export const createMic = (mic) => async dispatch => {
   })
 
   if (res.ok) {
-
+    const mic = await res.json()
+    dispatch(addMic(mic))
+    return mic;
   }
 }
 
@@ -56,7 +58,8 @@ const micReducer = (state = {}, action) => {
         micLockrObj[mic.id] = mic
       })
       return micLockrObj
-
+    case ADD_MIC:
+      return {...state, [action.mic.id]: action.mic}
     default:
       return state;
   }

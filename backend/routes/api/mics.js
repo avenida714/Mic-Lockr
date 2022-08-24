@@ -84,9 +84,9 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
 }))
 
 //create a new mic
-router.post("/new", requireAuth, asyncHandler(async function (req, res) {
+router.post("/create", micValidation, requireAuth, asyncHandler(async function (req, res) {
   const mic = await db.Mic.create(req.body)
-  res.json(mic)
+  return res.json(mic)
 }))
 
 
