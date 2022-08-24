@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createMic } from '../../store/mics'
 
-
 function AddMic() {
 
   const personLoggedIn = useSelector((state) => state.session.user)
@@ -17,8 +16,6 @@ function AddMic() {
   const [description, setDescription] = useState('')
   const [imageURL, setImageURL] = useState('')
   const [errors, setErrors] = useState([])
-
-
 
   //force the user to sign up if they access this page
   useEffect(() => {
@@ -45,7 +42,6 @@ function AddMic() {
         if (data && errors) setErrors(data.errors)
       })
   }
-
 
   return (
     <>
@@ -84,5 +80,4 @@ function AddMic() {
     </>
   )
 }
-
 export default AddMic

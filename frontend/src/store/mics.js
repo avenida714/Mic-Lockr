@@ -36,7 +36,7 @@ export const fetchMics = () => async dispatch => {
 }
 
 export const createMic = (mic) => async dispatch => {
-  const res = await csrfFetch('/api/mics', {
+  const res = await csrfFetch('/api/mics/create', {
     method: 'POST',
     body: JSON.stringify(mic)
   })
