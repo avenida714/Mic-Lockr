@@ -12,6 +12,7 @@ import { destroyMicThunk } from '../../store/mics';
 
 function LookAtSingleMic() {
 
+
   const micId = useParams().micId;
   const dispatch = useDispatch();
   const mics = useSelector(state => state.mics)
@@ -30,21 +31,25 @@ useEffect(() => {
 }, [dispatch])
 
 
+
 const deleteThisMic = function (micForDestruction){
   dispatch(destroyMicThunk(micForDestruction))
-    .then(() => history.push('/'))
-
 }
+
+//Delete button logic
 let deleteButton;
 
+//if (window.confirm('Are you sure you wish to delete this item?'))
+
 if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
-  deleteButton = (<button onClick={() => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
+  deleteButton = (<button onClick={
+    () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
 } else {
   deleteButton = null
 }
 
-// console.log(deleteButton)
-
+// {currentlyViewingThisMic.userId === personLoggedIn.id ? <button onClick={
+//   () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> : null}
 
   return (
     <>

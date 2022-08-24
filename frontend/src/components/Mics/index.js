@@ -29,11 +29,21 @@ function Mics() {
 
   let micLockrMics
 
-
-
   if (mics) {
    micLockrMics = Object.values(mics)
   }
+
+
+
+  let createButton;
+
+  if (personLoggedIn) {
+    createButton = (<button onClick={() => history.push('/mics/create'
+    )}>Add A Mic To the Lockr</button>)
+  } else {
+    createButton = null;
+  }
+
 
 
 if (personLoggedIn) {
@@ -49,6 +59,8 @@ if (personLoggedIn) {
         </span>
       )
     })}
+      {createButton}
+
       </span>
 
   </>
