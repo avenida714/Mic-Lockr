@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { createMic } from '../../store/mics'
+import { createMicThunk } from '../../store/mics'
 
 function AddMic() {
 
@@ -35,7 +35,7 @@ function AddMic() {
       description
 
     }
-    await dispatch(createMic(newMicForTheLockr))
+    await dispatch(createMicThunk(newMicForTheLockr))
       .then((newMic) => history.push(`/mics/${newMic.id}`))
       .catch(async (res) => {
         const data = await res.json();

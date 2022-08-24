@@ -3,8 +3,8 @@
 import {csrfFetch} from './csrf'
 
 const LOAD_MICS = 'mics/LOAD'
-
 const ADD_MIC = 'mics/ADD'  // bananable, disregard backend names
+const DELETE_MIC = 'mics/DELETE'
 
 //regular ACTION CREATOR to load mics
 export const loadMics = (mics) => {
@@ -21,13 +21,19 @@ export const addMic = (mic) => {
   }
 }
 
-//ac
+//ac to delete a mic
+export const deleteMic = (mic) => {
+  return {
+    type: DELETE_MIC,
+    mic
+  }
+}
 
 
 
 
 //thunc action creator for fetching all the mics (this is the action)
-export const fetchMics = () => async dispatch => {
+export const fetchMicsThunk = () => async dispatch => {
   const response = await csrfFetch('/api/mics')
   if(response.ok) {
     const mics = await response.json();
@@ -37,7 +43,8 @@ export const fetchMics = () => async dispatch => {
   }
 }
 
-export const createMic = (mic) => async dispatch => {
+//thunk AC to create a mic
+export const createMicThunk = (mic) => async dispatch => {
   const res = await csrfFetch('/api/mics/create', {
     method: 'POST',
     body: JSON.stringify(mic)
@@ -48,6 +55,17 @@ export const createMic = (mic) => async dispatch => {
     dispatch(addMic(mic))
     return mic;
   }
+}
+
+//thunk AC to delete a mic
+export const destroyMicThunk = (mic) => async dispatch => {
+  const res = await csrfFetch('/api/mics/delete', {
+    method: 'DELETE',
+    body: JSON.stringify(mic)
+  })
+  const removedMic = await res.json();
+  dispatch(deleteMic(removedMic))
+  return removedMic
 }
 
 //REDUCER
@@ -62,6 +80,10 @@ const micReducer = (state = {}, action) => {
       return micLockrObj
     case ADD_MIC:
       return {...state, [action.mic.id]: action.mic}
+    case DELETE_MIC:
+      const dupedState = {...state}
+      delete dupedState[action.mic]
+      return dupedState
     default:
       return state;
   }

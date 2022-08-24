@@ -5,8 +5,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 
-import { fetchMics } from "../../store/mics";
+import { fetchMicsThunk } from "../../store/mics";
 
+import { destroyMicThunk } from '../../store/mics';
 
 
 function LookAtSingleMic() {
@@ -18,15 +19,19 @@ function LookAtSingleMic() {
 
   const history = useHistory()
 
-  console.log(currentlyViewingThisMic)
+  // console.log(currentlyViewingThisMic)
 
 
 useEffect(() => {
-  dispatch(fetchMics())
+  dispatch(fetchMicsThunk())
 }, [dispatch])
 
 
+const deleteThisMic = function (micForDestruction){
+  dispatch(destroyMicThunk(micForDestruction))
+    .then(() => history.push('/'))
 
+}
 
 
   return (
@@ -34,7 +39,8 @@ useEffect(() => {
       <span>
       <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} onClick={() => history.goBack()}></img>
     </span>
-    {/* <button onClick={() => history.goBack()}>Back</button> */}
+    <button onClick={() => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button>
+
     </>
 
   )

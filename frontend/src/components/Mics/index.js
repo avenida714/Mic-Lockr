@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
-import { fetchMics } from "../../store/mics";
+import { fetchMicsThunk } from "../../store/mics";
 // import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -13,7 +13,7 @@ function Mics() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchMics())
+    dispatch(fetchMicsThunk())
   }, [dispatch])
 
   const history = useHistory();
