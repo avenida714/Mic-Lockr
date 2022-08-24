@@ -70,6 +70,12 @@ export const destroyMicThunk = (mic) => async dispatch => {
   return removedMic
 }
 
+
+//THUNK AC FOR UPDATE
+export const updateMicThunk = () => {
+
+}
+
 //REDUCER
 
 const micReducer = (state = {}, action) => {
