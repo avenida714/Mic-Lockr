@@ -15,6 +15,10 @@ function UpdateMic() {
 
   const currentlyViewingThisMic = mics[micId]
 
+  // console.log('THIS IS MY MIC ID ----------->', micId)
+  // console.log('THIS IS MY mics ----------->', mics)
+  // console.log('CURRENTLY VIEWING THIS MIC ----------->', currentlyViewingThisMic)
+
 
 useEffect(() => {
   dispatch(fetchMicsThunk())
