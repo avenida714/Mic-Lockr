@@ -6,6 +6,8 @@ const LOAD_MICS = 'mics/LOAD'
 const ADD_MIC = 'mics/ADD'  // bananable, disregard backend names
 const DELETE_MIC = 'mics/DELETE'
 
+const UPDATE_MIC = ''
+
 //regular ACTION CREATOR to load mics
 export const loadMics = (mics) => {
   return {type: LOAD_MICS,
