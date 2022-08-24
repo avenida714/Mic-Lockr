@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import logo from './micLockrLogo.jpeg'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -24,12 +25,17 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
+    <div>
+      <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">
+          <img src={logo} alt="logo" width="40px" height="40px" margin='8px' border-radius= '12px'></img>
+        </NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    </div>
+
   );
 }
 
