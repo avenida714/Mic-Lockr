@@ -9,6 +9,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Mics from "./components/Mics";
 import LookAtSingleMic from "./components/LookAtSingleMic";
+import AddMic from "./components/AddMic";
 
 
 
@@ -16,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const sessionUser = useSelector(state => state.session.user)
+  const personLoggedIn = useSelector(state => state.session.user)
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -31,7 +32,10 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/'>
-           {sessionUser ? <Mics /> : null}
+            {personLoggedIn ? <Mics /> : null}
+          </Route>
+          <Route exact path='/mics/create'>
+            {personLoggedIn ? <AddMic /> : <SignupFormPage />}
           </Route>
           <Route exact path='/mics/:micId'>
             <LookAtSingleMic />

@@ -36,13 +36,15 @@ export const fetchMics = () => async dispatch => {
 }
 
 export const createMic = (mic) => async dispatch => {
-  const res = await csrfFetch('/api/mics', {
+  const res = await csrfFetch('/api/mics/create', {
     method: 'POST',
     body: JSON.stringify(mic)
   })
 
   if (res.ok) {
-
+    const mic = await res.json()
+    dispatch(addMic(mic))
+    return mic;
   }
 }
 
@@ -56,7 +58,8 @@ const micReducer = (state = {}, action) => {
         micLockrObj[mic.id] = mic
       })
       return micLockrObj
-
+    case ADD_MIC:
+      return {...state, [action.mic.id]: action.mic}
     default:
       return state;
   }
