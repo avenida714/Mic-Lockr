@@ -60,13 +60,20 @@ export const fetchCommentsThunk = () => async dispatch => {
 /* ~~~~~~~~~~~~REDUCER ~~~~~~~~ */
 
 
-export default (state = {}, action) => {
-  switch (type) {
+const commentReducer = (state = {}, action) => {
+  switch (action.type) {
 
-  case first:
-    return { ...state, ...payload }
+  case LOAD_COMMENTS:
+    const commentObj = {};
+    action.comments.forEach(comment => {
+      commentObj[comment.id] = comment
+    })
+    return commentObj;
 
   default:
     return state
   }
 }
+
+
+export default commentReducer;
