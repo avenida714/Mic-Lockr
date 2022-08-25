@@ -62,44 +62,11 @@ const [title, setTitle] = useState('')
       .then(() => history.push(`/mics/${currentlyEditingThisMic.id}`))
       .catch(async (res) => {
         const jsonSaidThis = await res.json()
-
-        if(errors.length !== 0 && jsonSaidThis) {
-          setErrors(jsonSaidThis.errors)
-        }
+          if(jsonSaidThis && errors) setErrors(jsonSaidThis.errors)
       })
 
   }
 
-
-
-//dispatch()
-
-
-/*
-
-
-
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const newMicForTheLockr = {
-      userId: personLoggedIn.id,
-      imageURL,
-      title,
-      description
-
-    }
-    await dispatch(createMicThunk(newMicForTheLockr))
-      .then((newMic) => history.push(`/mics/${newMic.id}`))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && errors) setErrors(data.errors)
-      })
-  }
-
-*/
 
 
   return (
