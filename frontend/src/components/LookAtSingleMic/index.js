@@ -9,7 +9,9 @@ import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
 
-import { fetchCommentsThunk } from '../../store/comments';
+// import { fetchCommentsThunk } from '../../store/comments';
+
+import Comments from '../Comments';
 
 
 function LookAtSingleMic() {
@@ -47,7 +49,7 @@ const deleteThisMic = async function (micForDestruction){
   .then(() => history.push('/'))
 }
 
-//Delete button logic -------------
+//~~~~~~~~~~~~~Delete button logic -------------
 let deleteButton;
 
 const thisIsMyMic = currentlyViewingThisMic.userId === personLoggedIn.id
@@ -65,7 +67,7 @@ if (thisIsMyMic)  {
 
 
 
-//EDIT BUTTON logic
+//~~~~~~~~~~~~EDIT BUTTON logic
 
 let editButton;
 
@@ -87,6 +89,7 @@ if (thisIsMyMic) {
     </span>
     {editButton}
     {deleteButton}
+    <Comments />
     </>
 
   )
