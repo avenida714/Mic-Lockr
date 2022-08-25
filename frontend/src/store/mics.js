@@ -6,17 +6,19 @@ const LOAD_MICS = 'mics/LOAD'
 const ADD_MIC = 'mics/ADD'  // bananable, disregard backend names
 const DELETE_MIC = 'mics/DELETE'
 
-const UPDATE_MIC = ''
+const UPDATE_MIC = 'mics/UPDATE'
 
-//regular ACTION CREATOR to load mics
-export const loadMics = (mics) => {
+//regular ACTION CREATORS
+
+//to load mics
+const loadMics = (mics) => {
   return {type: LOAD_MICS,
   mics
 }
 }
 
 //ac for add mic
-export const addMic = (mic) => {
+const addMic = (mic) => {
   return {
     type: ADD_MIC,
     mic
@@ -24,16 +26,22 @@ export const addMic = (mic) => {
 }
 
 //ac to delete a mic
-export const deleteMic = (mic) => {
+const deleteMic = (mic) => {
   return {
     type: DELETE_MIC,
     mic
   }
 }
 
+//ac to update a mic
+const updateMic = (mic) => {
+
+
+}
 
 
 
+//THUNK ACTION CREATORS
 //thunc action creator for fetching all the mics (this is the action)
 export const fetchMicsThunk = () => async dispatch => {
   const response = await csrfFetch('/api/mics')
