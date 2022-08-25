@@ -1,3 +1,5 @@
+//components/UpdateMic
+
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
@@ -44,6 +46,9 @@ const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
 
 
+  const newMicData = {
+
+  }
 
 //dispatch()
 
