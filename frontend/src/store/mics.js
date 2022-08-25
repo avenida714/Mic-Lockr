@@ -51,7 +51,7 @@ export const fetchMicsThunk = () => async dispatch => {
   if(response.ok) {
     const mics = await response.json();
     dispatch(loadMics(mics))
-    console.log(mics)
+    // console.log(mics)
     return mics;
   }
 }

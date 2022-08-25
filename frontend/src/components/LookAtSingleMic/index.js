@@ -9,6 +9,8 @@ import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
 
+import { fetchCommentsThunk } from '../../store/comments';
+
 
 function LookAtSingleMic() {
 
@@ -30,6 +32,10 @@ useEffect(() => {
   dispatch(fetchMicsThunk())
 }, [dispatch])
 
+useEffect(() => {
+
+}, [dispatch])
+
 
 
 // const deleteThisMic = function (micForDestruction){
@@ -38,9 +44,7 @@ useEffect(() => {
 
 const deleteThisMic = async function (micForDestruction){
   const micGettingTotallyDestroyed = await dispatch(destroyMicThunk(micForDestruction))
-  if (micGettingTotallyDestroyed) {
-  history.goBack(2)
-  }
+  .then(() => history.push('/'))
 }
 
 //Delete button logic -------------
