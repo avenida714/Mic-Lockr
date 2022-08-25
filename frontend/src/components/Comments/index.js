@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+
+import { fetchCommentsThunk } from '../../store/comments';
+
+import { fetchMicsThunk } from '../../store/mics';
 
 
 
@@ -19,16 +23,21 @@ function Comments() {
   const personLoggedIn = useSelector(state => state.session.user)
 
 
-    console.log('this is the mic ------> ',currentlyViewingThisMic)
+  useEffect(() => {
+    dispatch(fetchMicsThunk())
+    dispatch(fetchCommentsThunk)
+  }, [dispatch])
+
+    // console.log('this is the mic ------> ',currentlyViewingThisMic)
 
 
-     console.log('this is the user logged in ------>', personLoggedIn)
+    //  console.log('this is the user logged in ------>', personLoggedIn)
 
      console.log('these are all the comments------>', allComments)
 
 
 
-  return (
+  return personLoggedIn && (
     <div>Comments</div>
   )
 }

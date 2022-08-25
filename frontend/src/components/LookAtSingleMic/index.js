@@ -22,7 +22,7 @@ function LookAtSingleMic() {
   const mics = useSelector(state => state.mics)
 
   const currentlyViewingThisMic = mics[micId]
-  // console.log('this is the mic ------> ',currentlyViewingThisMic)
+  console.log('this is the mic ------> ',currentlyViewingThisMic)
 
   const personLoggedIn = useSelector(state => state.session.user)
   // console.log('this is the user logged in ------>', personLoggedIn)
@@ -35,9 +35,6 @@ useEffect(() => {
   dispatch(fetchCommentsThunk())
 }, [dispatch])
 
-useEffect(() => {
-
-}, [dispatch])
 
 
 
@@ -81,7 +78,7 @@ if (thisIsMyMic) {
 
 
 
-  return (
+  return personLoggedIn && (
     <>
       <span>
       <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.goBack()}></img>
