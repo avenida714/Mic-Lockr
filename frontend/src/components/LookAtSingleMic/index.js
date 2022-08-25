@@ -9,7 +9,7 @@ import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
 
-// import { fetchCommentsThunk } from '../../store/comments';
+import { fetchCommentsThunk } from '../../store/comments';
 
 import Comments from '../Comments';
 
@@ -32,6 +32,7 @@ function LookAtSingleMic() {
 
 useEffect(() => {
   dispatch(fetchMicsThunk())
+  dispatch(fetchCommentsThunk())
 }, [dispatch])
 
 useEffect(() => {
@@ -45,7 +46,7 @@ useEffect(() => {
 // }
 
 const deleteThisMic = async function (micForDestruction){
-  const micGettingTotallyDestroyed = await dispatch(destroyMicThunk(micForDestruction))
+  dispatch(destroyMicThunk(micForDestruction))
   .then(() => history.push('/'))
 }
 
