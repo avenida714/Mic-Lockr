@@ -8,29 +8,21 @@ import { fetchCommentsThunk } from '../../store/comments';
 
 // import { fetchMicsThunk } from '../../store/mics';
 
-
-
 function Comments() {
 
   const dispatch = useDispatch();
   const {micId} = useParams();
 
   const allCommentsInObj = useSelector(state => state.comments)
-
   let comments;
-
   if(allCommentsInObj) {
      comments = Object.values(allCommentsInObj)
   }
-
 
   const mics = useSelector(state => state.mics)
   const currentlyViewingThisMic = mics[micId]
 
   const personLoggedIn = useSelector(state => state.session.user)
-
-
-
 
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
@@ -38,18 +30,20 @@ function Comments() {
   }, [dispatch, currentlyViewingThisMic])
 
     console.log('this is the mic ------> ',currentlyViewingThisMic)
-
-
      console.log('this is the user logged in ------>', personLoggedIn)
-
      console.log('these are all the comments in an OBJECT------>', allCommentsInObj)
-
-     console.log('these are all the COMMENTS ------->', comments)
-
+     console.log('these are all the COMMENTS[0].body ------->', comments[0].body)
 
 
   return personLoggedIn && (
-    <div>Comments</div>
+    <div>
+      <div>
+         {comments.map((commentObj) => {
+          return <div>{commentObj.body}</div>
+         })}
+      </div>
+
+    </div>
   )
 }
 
