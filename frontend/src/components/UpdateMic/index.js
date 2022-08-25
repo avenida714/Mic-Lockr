@@ -6,7 +6,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 import { fetchMicsThunk } from '../../store/mics';
 
-
+import { updateMicThunk } from '../../store/mics';
 
 
 function UpdateMic() {
@@ -26,6 +26,7 @@ function UpdateMic() {
   // console.log('THIS IS MY MIC ID ----------->', micId)
   // console.log('THIS IS MY mics ----------->', mics)
   // console.log('CURRENTLY Editing THIS MIC ----------->', currentlyEditingThisMic)
+  console.log('this isthe person logged in----------->', personLoggedIn)
 
 
 useEffect(() => {
@@ -46,9 +47,19 @@ const [title, setTitle] = useState('')
   const [errors, setErrors] = useState([])
 
 
-  const newMicData = {
+  const handleSubmit = async (e) => {
+     const newMicData = {
+    userId: personLoggedIn.id,
+    imageURL: imageURL,
+    title: title,
+    description: description
+  }
+
+  await dispatch(updateMicThunk)
 
   }
+
+
 
 //dispatch()
 
@@ -80,14 +91,41 @@ const [title, setTitle] = useState('')
 */
 
 
-
-
-
-
-
-
   return (
-    <div>UpdateMic</div>
+    <>
+    <form onSubmit={e => handleSubmit(e)}>
+      <ul>
+        {errors.map((error, index) => <li key={index}>{error}</li>)}
+      </ul>
+      <label>Mic Image URL:</label>
+      <input
+        name="imageURL"
+        type="text"
+        value={imageURL}
+        onChange={e => setImageURL(e.target.value)}
+        placeholder="Paste the URL of your mic here..."
+      />
+      <label>Title:</label>
+      <input
+        name="title"
+        type="text"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+        placeholder="What microphone is it...?"
+      />
+      <label>Description:</label>
+      <input
+        name="description"
+        type="text"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        placeholder="Tell us about this mic."
+      />
+      <button type="submit">Add Mic to the Lockr</button>
+      <button onClick={() => (history.push('/'))}>Cancel</button>
+    </form>
+
+    </>
   )
 }
 

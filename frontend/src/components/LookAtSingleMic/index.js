@@ -46,7 +46,9 @@ const deleteThisMic = async function (micForDestruction){
 //Delete button logic -------------
 let deleteButton;
 
-if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
+const thisIsMyMic = currentlyViewingThisMic.userId === personLoggedIn.id
+
+if (thisIsMyMic)  {
   deleteButton = (<button onClick={
     () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
   } else {
@@ -59,6 +61,19 @@ if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
 
 
 
+//EDIT BUTTON logic
+
+let editButton;
+
+if (thisIsMyMic) {
+  editButton = (<button onClick={
+    () => history.push(`/mics/${currentlyViewingThisMic.id}/edit`)}>Edit This Mic</button> )
+} else {
+  editButton = null;
+}
+
+
+
   return (
     <>
       <span>
@@ -67,6 +82,7 @@ if (currentlyViewingThisMic.userId === personLoggedIn.id)  {
       <h2>{currentlyViewingThisMic.description}</h2>
     </span>
     {deleteButton}
+    {editButton}
     </>
 
   )
