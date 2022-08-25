@@ -29,13 +29,13 @@ function Comments() {
 
   }, [dispatch, currentlyViewingThisMic])
 
-    console.log('this is the mic ------> ',currentlyViewingThisMic)
-     console.log('this is the user logged in ------>', personLoggedIn)
-     console.log('these are all the comments in an OBJECT------>', allCommentsInObj)
-     console.log('these are all the COMMENTS[0].body ------->', comments[0].body)
+    // console.log('this is the mic ------> ',currentlyViewingThisMic)
+    //  console.log('this is the user logged in ------>', personLoggedIn)
+    //  console.log('these are all the comments in an OBJECT------>', allCommentsInObj)
+    //  console.log('these are all the COMMENTS[0].body ------->', comments[0].body)
 
-
-  return personLoggedIn && (
+  //comments will only show if the user is logged in, and if there are any comments at all
+   return personLoggedIn && allCommentsInObj && (
     <div>
       <div>
          {comments.map((commentObj) => {
@@ -45,6 +45,8 @@ function Comments() {
 
     </div>
   )
+
+
 }
 
 export default Comments
