@@ -35,7 +35,10 @@ const deleteMic = (mic) => {
 
 //ac to update a mic
 const updateMic = (mic) => {
-
+  return {
+    type: UPDATE_MIC,
+    mic
+  }
 
 }
 
@@ -80,8 +83,20 @@ export const destroyMicThunk = (mic) => async dispatch => {
 
 
 //THUNK AC FOR UPDATE
-export const updateMicThunk = () => {
+export const updateMicThunk = (mic) => async (dispatch) => {
+  const response = await csrfFetch(`/api/mics/${mic.id}/`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(mic)
+  })
 
+    if (response.ok) {
+      const micToGetEdited = await response.json()
+      dispatch(updateMic(micToGetEdited))
+      return micToGetEdited
+    }
 }
 
 //REDUCER
@@ -96,6 +111,10 @@ const micReducer = (state = {}, action) => {
       return micLockrObj
     case ADD_MIC:
       return {...state, [action.mic.id]: action.mic}
+    case UPDATE_MIC:
+      const copiedState = {...state}
+      copiedState[action.mic.id] = {...action.mic}
+      return copiedState
     case DELETE_MIC:
       const dupedState = {...state}
       delete dupedState[action.mic]
