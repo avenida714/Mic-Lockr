@@ -6,15 +6,19 @@ const LOAD_MICS = 'mics/LOAD'
 const ADD_MIC = 'mics/ADD'  // bananable, disregard backend names
 const DELETE_MIC = 'mics/DELETE'
 
-//regular ACTION CREATOR to load mics
-export const loadMics = (mics) => {
+const UPDATE_MIC = 'mics/UPDATE'
+
+//regular ACTION CREATORS
+
+//to load mics
+const loadMics = (mics) => {
   return {type: LOAD_MICS,
   mics
 }
 }
 
 //ac for add mic
-export const addMic = (mic) => {
+const addMic = (mic) => {
   return {
     type: ADD_MIC,
     mic
@@ -22,16 +26,25 @@ export const addMic = (mic) => {
 }
 
 //ac to delete a mic
-export const deleteMic = (mic) => {
+const deleteMic = (mic) => {
   return {
     type: DELETE_MIC,
     mic
   }
 }
 
+//ac to update a mic
+const updateMic = (mic) => {
+  return {
+    type: UPDATE_MIC,
+    mic
+  }
+
+}
 
 
 
+//THUNK ACTION CREATORS
 //thunc action creator for fetching all the mics (this is the action)
 export const fetchMicsThunk = () => async dispatch => {
   const response = await csrfFetch('/api/mics')
@@ -68,6 +81,24 @@ export const destroyMicThunk = (mic) => async dispatch => {
   return removedMic
 }
 
+
+//THUNK AC FOR UPDATE
+export const updateMicThunk = (mic) => async (dispatch) => {
+  const response = await csrfFetch(`/api/mics/${mic.id}/`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(mic)
+  })
+
+    if (response.ok) {
+      const micToGetEdited = await response.json()
+      dispatch(updateMic(micToGetEdited))
+      return micToGetEdited
+    }
+}
+
 //REDUCER
 
 const micReducer = (state = {}, action) => {
@@ -80,6 +111,10 @@ const micReducer = (state = {}, action) => {
       return micLockrObj
     case ADD_MIC:
       return {...state, [action.mic.id]: action.mic}
+    case UPDATE_MIC:
+      const copiedState = {...state}
+      copiedState[action.mic.id] = {...action.mic}
+      return copiedState
     case DELETE_MIC:
       const dupedState = {...state}
       delete dupedState[action.mic]
