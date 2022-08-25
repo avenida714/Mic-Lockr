@@ -2,6 +2,7 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import commentReducer from './comments';
 import micReducer from './mics';
 
 //PHASE 1 LOGIN FORM PAGE
@@ -10,7 +11,8 @@ import sessionReducer from './session';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  mics: micReducer
+  mics: micReducer,
+  comments: commentReducer
 });
 
 

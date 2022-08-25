@@ -9,7 +9,7 @@ import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
 
-import { fetchCommentsThunk } from '../../store/comments';
+// import { fetchCommentsThunk } from '../../store/comments';
 
 import Comments from '../Comments';
 
@@ -22,7 +22,7 @@ function LookAtSingleMic() {
   const mics = useSelector(state => state.mics)
 
   const currentlyViewingThisMic = mics[micId]
-  console.log('this is the mic ------> ',currentlyViewingThisMic)
+  // console.log('this is the mic ------> ',currentlyViewingThisMic)
 
   const personLoggedIn = useSelector(state => state.session.user)
   // console.log('this is the user logged in ------>', personLoggedIn)
@@ -32,7 +32,6 @@ function LookAtSingleMic() {
 
 useEffect(() => {
   dispatch(fetchMicsThunk())
-  dispatch(fetchCommentsThunk())
 }, [dispatch])
 
 

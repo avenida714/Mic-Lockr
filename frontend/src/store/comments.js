@@ -11,7 +11,8 @@ const UPDATE_COMMENT = 'comments/UPDATE'
 /* ~~~~~~~~~~~~REGULAR ACTION CREATORS ~~~~~~~~ */
 
 const loadComments = (comments) => {
-  return {type: LOAD_COMMENTS,
+  return {
+  type: LOAD_COMMENTS,
   comments
   }
 }
@@ -48,8 +49,14 @@ const updateComment = (comment) => {
 
 export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
   const response = await csrfFetch(`/api/comments/${talkingAboutThisMic.id}`)
+  // console.log('talking about this mic -------->', talkingAboutThisMic)
+  // const response = await csrfFetch(`/api/comments/`)
+
+  // console.log('this is the response ------>', response)
+
   if(response.ok) {
     const comments = await response.json();
+    // console.log('these are the comments ------->', comments)
     dispatch(loadComments(comments))
     console.log(comments)
     return comments;
@@ -68,6 +75,7 @@ const commentReducer = (state = {}, action) => {
     action.comments.forEach(comment => {
       commentObj[comment.id] = comment
     })
+    console.log('this is the comment OBJ from the reducer ------->', commentObj)
     return commentObj;
 
   default:

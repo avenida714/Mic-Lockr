@@ -1,39 +1,50 @@
+//components/Comments
+
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 
 import { fetchCommentsThunk } from '../../store/comments';
 
-import { fetchMicsThunk } from '../../store/mics';
+// import { fetchMicsThunk } from '../../store/mics';
 
 
 
 function Comments() {
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
+  const {micId} = useParams();
 
-  const micId = useParams().micId;
+  const allCommentsInObj = useSelector(state => state.comments)
 
-  const allComments = useSelector(state => state.comments)
+  let comments;
+
+  if(allCommentsInObj) {
+     comments = Object.values(allCommentsInObj)
+  }
+
 
   const mics = useSelector(state => state.mics)
-
   const currentlyViewingThisMic = mics[micId]
 
   const personLoggedIn = useSelector(state => state.session.user)
 
 
+
+
   useEffect(() => {
-    dispatch(fetchMicsThunk())
-    dispatch(fetchCommentsThunk)
-  }, [dispatch])
+    dispatch(fetchCommentsThunk(currentlyViewingThisMic))
 
-    // console.log('this is the mic ------> ',currentlyViewingThisMic)
+  }, [dispatch, currentlyViewingThisMic])
+
+    console.log('this is the mic ------> ',currentlyViewingThisMic)
 
 
-    //  console.log('this is the user logged in ------>', personLoggedIn)
+     console.log('this is the user logged in ------>', personLoggedIn)
 
-     console.log('these are all the comments------>', allComments)
+     console.log('these are all the comments in an OBJECT------>', allCommentsInObj)
+
+     console.log('these are all the COMMENTS ------->', comments)
 
 
 
