@@ -46,8 +46,8 @@ const updateComment = (comment) => {
 /* ~~~~~~~~~~~~THUNK ACTION CREATORS ~~~~~~~~ */
 
 
-export const fetchCommentsThunk = () => async dispatch => {
-  const response = await csrfFetch('/api/comments')
+export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
+  const response = await csrfFetch(`/api/comments/${talkingAboutThisMic.id}`)
   if(response.ok) {
     const comments = await response.json();
     dispatch(loadComments(comments))
