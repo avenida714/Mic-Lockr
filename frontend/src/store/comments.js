@@ -47,6 +47,7 @@ const updateComment = (comment) => {
 /* ~~~~~~~~~~~~THUNK ACTION CREATORS ~~~~~~~~ */
 
 
+//GET ALL COMMENTS for 1 mic
 export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
   const response = await csrfFetch(`/api/comments/${talkingAboutThisMic.id}`)
   // console.log('talking about this mic -------->', talkingAboutThisMic)
@@ -60,6 +61,21 @@ export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
     dispatch(loadComments(comments))
     console.log(comments)
     return comments;
+  }
+}
+
+
+//CREATE A COMMENT
+export const createCommentThunk = (comment) => async dispatch => {
+  const res = await csrfFetch('/api/comments/create', {
+    method: 'POST',
+    body: JSON.stringify(comment)
+  })
+
+  if (res.ok) {
+    const comment = await res.json()
+    dispatch(addComment(comment))
+    return comment
   }
 }
 
