@@ -81,8 +81,8 @@ if (thisIsMyMic) {
       <h1>{currentlyViewingThisMic.title}</h1>
       <h2>{currentlyViewingThisMic.description}</h2>
     </span>
-    {deleteButton}
     {editButton}
+    {deleteButton}
     </>
 
   )

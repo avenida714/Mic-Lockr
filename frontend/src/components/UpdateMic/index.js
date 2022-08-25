@@ -103,7 +103,7 @@ const [title, setTitle] = useState('')
         type="text"
         value={imageURL}
         onChange={e => setImageURL(e.target.value)}
-        placeholder="Paste the URL of your mic here..."
+        placeholder={currentlyEditingThisMic.imageURL}
       />
       <label>Title:</label>
       <input
@@ -111,7 +111,7 @@ const [title, setTitle] = useState('')
         type="text"
         value={title}
         onChange={e => setTitle(e.target.value)}
-        placeholder="What microphone is it...?"
+        placeholder={currentlyEditingThisMic.title}
       />
       <label>Description:</label>
       <input
@@ -119,9 +119,9 @@ const [title, setTitle] = useState('')
         type="text"
         value={description}
         onChange={e => setDescription(e.target.value)}
-        placeholder="Tell us about this mic."
+        placeholder={currentlyEditingThisMic.description}
       />
-      <button type="submit">Add Mic to the Lockr</button>
+      <button type="submit" onClick={() => (history.push('/'))} >Update This Mic</button>
       <button onClick={() => (history.push('/'))}>Cancel</button>
     </form>
 
