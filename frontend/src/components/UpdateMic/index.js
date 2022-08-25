@@ -48,14 +48,25 @@ const [title, setTitle] = useState('')
 
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+          //be sure to send the micId so it can be found to be updated
      const newMicData = {
+      micId:currentlyEditingThisMic.id,
     userId: personLoggedIn.id,
     imageURL: imageURL,
     title: title,
     description: description
   }
 
-  await dispatch(updateMicThunk)
+   dispatch(updateMicThunk(newMicData))
+      .then(() => history.push(`/mics/${currentlyEditingThisMic.id}`))
+      .catch(async (res) => {
+        const jsonSaidThis = await res.json()
+
+        if(errors.length !== 0 && jsonSaidThis) {
+          setErrors(jsonSaidThis.errors)
+        }
+      })
 
   }
 
@@ -121,7 +132,7 @@ const [title, setTitle] = useState('')
         onChange={e => setDescription(e.target.value)}
         placeholder={currentlyEditingThisMic.description}
       />
-      <button type="submit" onClick={() => (history.push('/'))} >Update This Mic</button>
+      <button type="submit">Update This Mic</button>
       <button onClick={() => (history.push('/'))}>Cancel</button>
     </form>
 
