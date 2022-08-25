@@ -91,8 +91,10 @@ const commentReducer = (state = {}, action) => {
     action.comments.forEach(comment => {
       commentObj[comment.id] = comment
     })
-    console.log('this is the comment OBJ from the reducer ------->', commentObj)
+    // console.log('this is the comment OBJ from the reducer ------->', commentObj)
     return commentObj;
+  case ADD_COMMENT:
+    return {...state, [action.comment.id]: action.comment}
 
   default:
     return state
