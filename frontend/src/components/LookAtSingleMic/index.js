@@ -9,6 +9,10 @@ import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
 
+// import { fetchCommentsThunk } from '../../store/comments';
+
+import Comments from '../Comments';
+
 
 function LookAtSingleMic() {
 
@@ -32,18 +36,17 @@ useEffect(() => {
 
 
 
+
 // const deleteThisMic = function (micForDestruction){
 //   dispatch(destroyMicThunk(micForDestruction))
 // }
 
 const deleteThisMic = async function (micForDestruction){
-  const micGettingTotallyDestroyed = await dispatch(destroyMicThunk(micForDestruction))
-  if (micGettingTotallyDestroyed) {
-  history.goBack(2)
-  }
+  dispatch(destroyMicThunk(micForDestruction))
+  .then(() => history.push('/'))
 }
 
-//Delete button logic -------------
+//~~~~~~~~~~~~~Delete button logic -------------
 let deleteButton;
 
 const thisIsMyMic = currentlyViewingThisMic.userId === personLoggedIn.id
@@ -61,7 +64,7 @@ if (thisIsMyMic)  {
 
 
 
-//EDIT BUTTON logic
+//~~~~~~~~~~~~EDIT BUTTON logic
 
 let editButton;
 
@@ -74,7 +77,7 @@ if (thisIsMyMic) {
 
 
 
-  return (
+  return personLoggedIn && (
     <>
       <span>
       <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.goBack()}></img>
@@ -83,6 +86,7 @@ if (thisIsMyMic) {
     </span>
     {editButton}
     {deleteButton}
+    <Comments />
     </>
 
   )
