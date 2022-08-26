@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 
 import { fetchCommentsThunk } from '../../store/comments';
 
+
 // import { fetchMicsThunk } from '../../store/mics';
 
 function Comments() {
