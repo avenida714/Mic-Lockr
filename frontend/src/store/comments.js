@@ -47,6 +47,7 @@ const updateComment = (comment) => {
 /* ~~~~~~~~~~~~THUNK ACTION CREATORS ~~~~~~~~ */
 
 
+//GET ALL COMMENTS for 1 mic
 export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
   const response = await csrfFetch(`/api/comments/${talkingAboutThisMic.id}`)
   // console.log('talking about this mic -------->', talkingAboutThisMic)
@@ -64,6 +65,21 @@ export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
 }
 
 
+//CREATE A COMMENT
+export const createCommentThunk = (comment) => async dispatch => {
+  const res = await csrfFetch('/api/comments/create', {
+    method: 'POST',
+    body: JSON.stringify(comment)
+  })
+
+  if (res.ok) {
+    const comment = await res.json()
+    dispatch(addComment(comment))
+    return comment
+  }
+}
+
+
 /* ~~~~~~~~~~~~REDUCER ~~~~~~~~ */
 
 
@@ -75,8 +91,10 @@ const commentReducer = (state = {}, action) => {
     action.comments.forEach(comment => {
       commentObj[comment.id] = comment
     })
-    console.log('this is the comment OBJ from the reducer ------->', commentObj)
+    // console.log('this is the comment OBJ from the reducer ------->', commentObj)
     return commentObj;
+  case ADD_COMMENT:
+    return {...state, [action.comment.id]: action.comment}
 
   default:
     return state

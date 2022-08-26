@@ -24,6 +24,8 @@ function Comments() {
 
   const personLoggedIn = useSelector(state => state.session.user)
 
+// console.log('this is the person logged in  --------->', personLoggedIn.username)
+
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
 
@@ -34,15 +36,38 @@ function Comments() {
     //  console.log('these are all the comments in an OBJECT------>', allCommentsInObj)
     //  console.log('these are all the COMMENTS[0].body ------->', comments[0].body)
 
+
+
+
+
+
   //comments will only show if the user is logged in, and if there are any comments at all
-   return personLoggedIn && allCommentsInObj && (
-    <div>
-      <div>
-         {comments.map((commentObj) => {
-          return <div>{commentObj.body}</div>
-         })}
+
+
+  //~~~~~~~~~COMMENT TABLE LOGIC
+  let commentTable;
+  personLoggedIn && allCommentsInObj ? commentTable =  <div>
+  <div>
+     {comments.map((commentObj) => {
+      const thisIsMyComment = commentObj.userId === personLoggedIn.id
+      return <div>
+        {/* {`${personLoggedIn.username} says: `} */}
+        {commentObj.body}
+        {thisIsMyComment ? <button >DELETE</button> : null}
       </div>
 
+     })}
+  </div>
+</div> : commentTable = null
+
+
+
+
+
+
+   return (
+    <div className="commentBox" height="400px" width="400px">
+    {commentTable}
     </div>
   )
 

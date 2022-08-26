@@ -1,13 +1,15 @@
 //lookAtSingleMic component
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 
+
 import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
+import AddComment from '../AddComment';
 
 // import { fetchCommentsThunk } from '../../store/comments';
 
@@ -76,17 +78,32 @@ if (thisIsMyMic) {
 }
 
 
+//~~~~~~~~~~~COMMENT BUTTON logic
+
+const [showCommentForm, setShowCommentForm] = useState(false)
+
+let commentButton
+
+if (personLoggedIn) {
+  commentButton = (<button onClick={() => setShowCommentForm(true)}>Write A Comment</button> )
+}
+
+
 
   return personLoggedIn && (
     <>
-      <span>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.goBack()}></img>
+      <div>
+      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.push('/')}></img>
       <h1>{currentlyViewingThisMic.title}</h1>
       <h2>{currentlyViewingThisMic.description}</h2>
-    </span>
+    </div>
     {editButton}
     {deleteButton}
     <Comments />
+    {commentButton}
+    {showCommentForm && (
+      <AddComment />
+    )}
     </>
 
   )
