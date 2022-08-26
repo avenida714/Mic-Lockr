@@ -87,6 +87,9 @@ export const destroyCommentThunk = (comment) => async dispatch => {
     method: 'DELETE',
     body: JSON.stringify(comment)
   })
+  const removedComment = await res.json();
+  dispatch(deleteComment(removedComment))
+  return removedComment
 }
 
 
