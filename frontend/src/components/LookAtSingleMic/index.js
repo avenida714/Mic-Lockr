@@ -1,6 +1,6 @@
 //lookAtSingleMic component
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { createCommentThunk } from '../../store/comments';
 import { fetchMicsThunk } from "../../store/mics";
 
 import { destroyMicThunk } from '../../store/mics';
+import AddComment from '../AddComment';
 
 // import { fetchCommentsThunk } from '../../store/comments';
 
@@ -79,10 +80,12 @@ if (thisIsMyMic) {
 
 //~~~~~~~~~~~COMMENT BUTTON logic
 
+const [showCommentForm, setShowCommentForm] = useState(false)
+
 let commentButton
 
 if (personLoggedIn) {
-  commentButton = (<button onClick={createCommentThunk()}>Write A Comment</button> )
+  commentButton = (<button onClick={() => setShowCommentForm(true)}>Write A Comment</button> )
 }
 
 
@@ -97,8 +100,10 @@ if (personLoggedIn) {
     {editButton}
     {deleteButton}
     <Comments />
-
     {commentButton}
+    {showCommentForm && (
+      <AddComment />
+    )}
     </>
 
   )
