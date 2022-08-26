@@ -24,7 +24,7 @@ function Comments() {
 
   const personLoggedIn = useSelector(state => state.session.user)
 
-
+// console.log('this is the person logged in  --------->', personLoggedIn.username)
 
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
@@ -51,8 +51,9 @@ function Comments() {
      {comments.map((commentObj) => {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
       return <div>
+        {/* {`${personLoggedIn.username} says: `} */}
         {commentObj.body}
-        {thisIsMyComment ? <button>DELETE</button> : null}
+        {thisIsMyComment ? <button >DELETE</button> : null}
       </div>
 
      })}
