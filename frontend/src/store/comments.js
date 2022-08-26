@@ -110,7 +110,10 @@ const commentReducer = (state = {}, action) => {
     return commentObj;
   case ADD_COMMENT:
     return {...state, [action.comment.id]: action.comment}
-
+  case DELETE_COMMENT:
+    const afterDeleteState = {...state}
+    delete afterDeleteState[action.comment]
+    return afterDeleteState
   default:
     return state
   }
