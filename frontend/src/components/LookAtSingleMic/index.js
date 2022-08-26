@@ -4,6 +4,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
+import { createCommentThunk } from '../../store/comments';
 
 import { fetchMicsThunk } from "../../store/mics";
 
@@ -76,17 +77,28 @@ if (thisIsMyMic) {
 }
 
 
+//~~~~~~~~~~~COMMENT BUTTON logic
+
+let commentButton
+
+if (personLoggedIn) {
+  commentButton = (<button onClick={createCommentThunk()}>Write A Comment</button> )
+}
+
+
 
   return personLoggedIn && (
     <>
-      <span>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.goBack()}></img>
+      <div>
+      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.push('/')}></img>
       <h1>{currentlyViewingThisMic.title}</h1>
       <h2>{currentlyViewingThisMic.description}</h2>
-    </span>
+    </div>
     {editButton}
     {deleteButton}
     <Comments />
+
+    {commentButton}
     </>
 
   )
