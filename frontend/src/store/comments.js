@@ -33,14 +33,15 @@ const deleteComment = (comment) => {
   }
 }
 
-//ac to update a comment
-const updateComment = (comment) => {
-  return {
-    type: UPDATE_COMMENT,
-    comment
-  }
+//update for later
+// //ac to update a comment
+// const updateComment = (comment) => {
+//   return {
+//     type: UPDATE_COMMENT,
+//     comment
+//   }
 
-}
+// }
 
 
 
@@ -79,6 +80,20 @@ export const createCommentThunk = (comment) => async dispatch => {
   }
 }
 
+//DELETE A COMMENT
+
+export const destroyCommentThunk = (comment) => async dispatch => {
+  // console.log('this is the comment ----->', comment)
+  const res = await csrfFetch('/api/comments/', {
+    method: 'DELETE',
+    body: JSON.stringify(comment)
+  })
+  const removedComment = await res.json();
+  dispatch(deleteComment(comment.id))
+  return removedComment
+}
+
+
 
 /* ~~~~~~~~~~~~REDUCER ~~~~~~~~ */
 
@@ -95,7 +110,10 @@ const commentReducer = (state = {}, action) => {
     return commentObj;
   case ADD_COMMENT:
     return {...state, [action.comment.id]: action.comment}
-
+  case DELETE_COMMENT:
+    const afterDeleteState = {...state}
+    delete afterDeleteState[action.comment]
+    return afterDeleteState
   default:
     return state
   }
