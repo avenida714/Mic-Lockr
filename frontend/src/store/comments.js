@@ -83,12 +83,13 @@ export const createCommentThunk = (comment) => async dispatch => {
 //DELETE A COMMENT
 
 export const destroyCommentThunk = (comment) => async dispatch => {
-  const res = await csrfFetch('/api/comments/delete', {
+  // console.log('this is the comment ----->', comment)
+  const res = await csrfFetch('/api/comments/', {
     method: 'DELETE',
     body: JSON.stringify(comment)
   })
   const removedComment = await res.json();
-  dispatch(deleteComment(removedComment))
+  dispatch(deleteComment(comment.id))
   return removedComment
 }
 
