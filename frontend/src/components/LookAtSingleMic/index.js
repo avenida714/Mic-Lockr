@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { createCommentThunk } from '../../store/comments';
+
 
 import { fetchMicsThunk } from "../../store/mics";
 
