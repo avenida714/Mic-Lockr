@@ -28,11 +28,13 @@ function AddComment() {
 
     //db expected userId, imageURL, body
     const newCommentForThisMic = {
+      micId: currentlyViewingThisMic.id,
       userId: personLoggedIn.id,
       imageURL: currentlyViewingThisMic.imageURL,
       body: comment,
 
     }
+    // console.log('this is the new comment for this mic ------>', newCommentForThisMic)
     await dispatch(createCommentThunk(newCommentForThisMic))
       .catch(async (res) => {
         const data = await res.json();

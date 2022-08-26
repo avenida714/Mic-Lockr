@@ -26,7 +26,7 @@ router.get('/:micId', asyncHandler(async function (req, res) {
 }))
 
 //create a comment
-router.post('/', validateComment, requireAuth, asyncHandler(async function(req, res) {
+router.post('/create', validateComment, requireAuth, asyncHandler(async function(req, res) {
   const {userId, micId, body} = req.body
 
   const comment = await db.Comment.build({  //flagx might need to add info to remember the user of this comment
