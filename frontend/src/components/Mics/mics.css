@@ -58,8 +58,9 @@ h3 {
   transform: scale(1.1);
 }
 
-.outerSpan {
+.outerDiv {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  max-width: 1000px;
+  max-width: 2000px;
 }

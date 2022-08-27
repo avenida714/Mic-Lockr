@@ -5,7 +5,7 @@ import { csrfFetch } from "./csrf"
 const LOAD_COMMENTS = 'comments/LOAD'
 const ADD_COMMENT = 'comments/ADD'
 const DELETE_COMMENT = 'comments/DELETE'
-const UPDATE_COMMENT = 'comments/UPDATE'
+// const UPDATE_COMMENT = 'comments/UPDATE'
 
 
 /* ~~~~~~~~~~~~REGULAR ACTION CREATORS ~~~~~~~~ */
