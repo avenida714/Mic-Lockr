@@ -25,11 +25,11 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div>
+    <div className="navBar-div">
       <ul>
       <li>
         <NavLink exact to="/">
-          <img src={logo} alt="logo" width="40px" height="40px" margin='8px' border-radius= '12px'></img>
+          <img src={logo} alt="logo" width="100px" height="100px" margin='8px' border-radius= '12px'></img>
         </NavLink>
         {isLoaded && sessionLinks}
       </li>

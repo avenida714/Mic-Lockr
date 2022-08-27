@@ -1,5 +1,4 @@
-/* TODO Add site wide styles */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 
 * {
   margin: 10px;
@@ -10,12 +9,23 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
-  /* text-size-adjust: 100px; */
+  text-size-adjust: 100px;
 }
+
+.profile-dropdown {
+  text-decoration: none;
+  color: rgb(234, 11, 11);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/*
+.navBar-div {
+  display:flex;
+} */
 
 a {
   text-decoration: none;
-  color: #000;
+  color: rgb(234, 11, 11);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 p {
@@ -29,13 +39,8 @@ ul {
 li {
   line-height: 2.2;
 }
-/*
-h1,
-h2,
-h3 {
-  font-weight: 600;
-  margin-bottom: 10px;
-} */
+
+
 
 button {
   background: linear-gradient(to bottom right, rgb(126, 122, 122), #fcf9ed);

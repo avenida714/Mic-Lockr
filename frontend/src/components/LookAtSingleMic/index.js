@@ -15,6 +15,7 @@ import AddComment from '../AddComment';
 
 import Comments from '../Comments';
 
+import './LookAtSingleMic.css'
 
 function LookAtSingleMic() {
 
@@ -93,7 +94,7 @@ if (personLoggedIn) {
   return personLoggedIn && (
     <>
       <div>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.push('/')}></img>
+      <img id="micImage" className='micImages' src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.push('/')}></img>
       <h1>{currentlyViewingThisMic.title}</h1>
       <h2>{currentlyViewingThisMic.description}</h2>
     </div>
