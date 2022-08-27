@@ -14,6 +14,8 @@ const { requireAuth } = require('../../utils/auth');
 
 const micValidation = [
   check('imageURL')
+    .notEmpty()
+    .withMessage("Don't give us nothing; please provide an image URL.")
     .exists({checkFalsy: true})
     .withMessage('Please give us a valid image URL.')
     .isLength({max:255})
@@ -21,10 +23,14 @@ const micValidation = [
     .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
     .withMessage('This image link is not valid; Please provide a valid image link.'),
   check('title')
+    .notEmpty()
+    .withMessage('Please give us a title.')
     .exists({checkFalsy: true})
     .isLength({max: 80})
     .withMessage('Please ensure that your title length is fewer than 80 characters, including spaces'),
   check('description')
+    .notEmpty()
+    .withMessage('Hey now, give us a description of the Microphone, please.')
     .exists({checkFalsy: true})
     .withMessage("Don't be shy, please write a description.")
     .isLength({max: 255})

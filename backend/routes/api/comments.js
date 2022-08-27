@@ -11,6 +11,8 @@ const asyncHandler = require('express-async-handler');
 
 const validateComment = [
   check('body')
+  .notEmpty()
+  .withMessage('Let us know what you think; fill out your comment.')
   .exists({checkFalsy: true})
   .withMessage("Don't be shy, find your voice and please leave a comment.")
   .isLength({max: 600})
