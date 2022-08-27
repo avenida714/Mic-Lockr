@@ -2,3 +2,7 @@
   width: 20px;
   height: 20px;
 }
+
+.navBar-div {
+  display: flex;
+}

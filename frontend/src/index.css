@@ -23,10 +23,38 @@ body {
 } */
 
 a {
+  background: linear-gradient(to bottom right, rgb(126, 122, 122), #fcf9ed);
+  margin: 8px;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
   text-decoration: none;
-  color: rgb(234, 11, 11);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  max-height: 2vw;
 }
+
+a:not([disabled]):focus {
+  box-shadow: 0 0 0.25rem rgba(108, 108, 108, 0.5),
+    -0.125rem -0.125rem 1rem black 0.125rem 0.125rem 1rem #fcf9ed;
+}
+
+a:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem black, .125rem .125rem 1rem rgb(255, 47, 47);
+  color: rgb(255, 47, 47)
+}
+
 
 p {
   line-height: 1.7;
@@ -62,6 +90,7 @@ button {
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
+  max-height: 2vw;
 }
 
 button:not([disabled]):focus {

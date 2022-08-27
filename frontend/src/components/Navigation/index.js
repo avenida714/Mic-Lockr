@@ -26,14 +26,12 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navBar-div">
-      <ul>
-      <li>
         <NavLink exact to="/">
-          <img src={logo} alt="logo" width="100px" height="100px" margin='8px' border-radius= '12px'></img>
+          SPLASH
+          {/* <img src={logo} alt="logo" width="100px" height="100px" margin='8px' border-radius= '12px'></img> */}
         </NavLink>
+
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
     </div>
 
   );
