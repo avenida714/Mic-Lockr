@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createMicThunk } from '../../store/mics'
 
+import './addMic.css'
+
 function AddMic() {
 
   const personLoggedIn = useSelector((state) => state.session.user)
@@ -46,8 +48,8 @@ function AddMic() {
   }
 
   return (
-    <>
-    <form onSubmit={e => handleSubmit(e)}>
+    <div className='addMicFormOuter'>
+    <form className='formPieces'onSubmit={e => handleSubmit(e)}>
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
@@ -79,7 +81,7 @@ function AddMic() {
       <button onClick={() => (history.push('/'))}>Cancel</button>
     </form>
 
-    </>
+    </div>
   )
 }
 export default AddMic
