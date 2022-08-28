@@ -4,8 +4,12 @@
 * {
   margin: 2px;
   padding: 2px;
-  box-sizing: border-box;
   background-color: rgb(240, 238, 238);
+}
+
+.singleMicDiv {
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -14,9 +18,7 @@ body {
   size: 20px;
 }
 
-ul {
-  list-style: none;
-}
+
 
 li {
   line-height: 2.2;
@@ -34,7 +36,7 @@ h3 {
   height: 20%;
 }
 
-/* .micImages {
+/* .micImage {
   width: 400px;
   height: 100%;
   margin: 0 auto;
