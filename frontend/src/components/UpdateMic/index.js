@@ -83,7 +83,7 @@ const [title, setTitle] = useState('')
         type="text"
         value={imageURL}
         onChange={e => setImageURL(e.target.value)}
-        text={currentlyEditingThisMic.imageURL}
+        defaultValue={currentlyEditingThisMic.imageURL}
       />
       <label>Title:</label>
       <input

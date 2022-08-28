@@ -14,16 +14,12 @@ input{
   height: 100%
 } */
 
-body {
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  text-size-adjust: 100px;
-}
+
 
 .profile-dropdown {
   text-decoration: none;
   color: rgb(234, 11, 11);
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 /*
 .navBar-div {
