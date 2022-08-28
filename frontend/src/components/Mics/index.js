@@ -48,7 +48,7 @@ function Mics() {
 
 if (personLoggedIn) {
   return (
-    <>
+    <div className="parentLockrDiv">
       <h1 className="headline">Welcome To The Mic Lockr!</h1>
       <div className="outerDiv">
       {micLockrMics.map((micObj) => {
@@ -61,10 +61,12 @@ if (personLoggedIn) {
       )
     })}
       </div>
+    <div>
       {createButton}
+    </div>
 
 
-  </>
+  </div>
   )
 }
 

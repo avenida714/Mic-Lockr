@@ -40,7 +40,12 @@ h3 {
 }
 
 
-
+.parentLockrDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 
