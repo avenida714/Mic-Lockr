@@ -48,22 +48,25 @@ function Mics() {
 
 if (personLoggedIn) {
   return (
-    <>
-      <span>
+    <div className="parentLockrDiv">
+      <h1 className="headline">Welcome To The Mic Lockr!</h1>
+      <div className="outerDiv">
       {micLockrMics.map((micObj) => {
       return (
-        <span className="outerSpan" key={micObj.id}>
-        <span className="img-holder" key={micObj.id}>
+        <div key={micObj.id}>
+        <div className="img-holder" key={micObj.id}>
           <img className="micImages" src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
-        </span>
-        </span>
+        </div>
+        </div>
       )
     })}
+      </div>
+    <div>
       {createButton}
+    </div>
 
-      </span>
 
-  </>
+  </div>
   )
 }
 

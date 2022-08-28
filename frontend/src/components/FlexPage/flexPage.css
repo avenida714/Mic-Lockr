@@ -1,0 +1,27 @@
+.homeMicContainer {
+  max-width: 100%;
+  position: relative;
+  text-align: center;
+
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+
+}
+
+#title{
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: transparent;
+background-color: black;
+color:rgb(247, 240, 231)
+}
+
+#catchPhrase {
+  background-color: black;
+  color:rgb(254, 251, 246)
+}

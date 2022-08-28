@@ -15,6 +15,7 @@ import AddComment from '../AddComment';
 
 import Comments from '../Comments';
 
+import './LookAtSingleMic.css'
 
 function LookAtSingleMic() {
 
@@ -45,7 +46,7 @@ useEffect(() => {
 
 const deleteThisMic = async function (micForDestruction){
   dispatch(destroyMicThunk(micForDestruction))
-  .then(() => history.push('/'))
+  // (() => history.push('/'))
 }
 
 //~~~~~~~~~~~~~Delete button logic -------------
@@ -55,7 +56,8 @@ const thisIsMyMic = currentlyViewingThisMic.userId === personLoggedIn.id
 
 if (thisIsMyMic)  {
   deleteButton = (<button onClick={
-    () => deleteThisMic(currentlyViewingThisMic)}>Delete This Mic</button> )
+    () => deleteThisMic(currentlyViewingThisMic)
+  .then(history.push('/'))}>Delete This Mic</button> )
   } else {
     deleteButton = null
   }
@@ -91,20 +93,22 @@ if (personLoggedIn) {
 
 
   return personLoggedIn && (
-    <>
-      <div>
-      <img id="micImage" src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title} height="850px" onClick={() => history.push('/')}></img>
-      <h1>{currentlyViewingThisMic.title}</h1>
-      <h2>{currentlyViewingThisMic.description}</h2>
+    <div className='mostOuterDiv'>
+      <div className='singleMicDiv'>
+      <img className='micImage' src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title}  onClick={() => history.push('/')}></img>
+      <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
+      <h2 className='singleMicDescription'>{currentlyViewingThisMic.description}</h2>
     </div>
-    {editButton}
-    {deleteButton}
+    <div>
+      {editButton}{deleteButton}
+    </div>
+
     <Comments />
     {commentButton}
     {showCommentForm && (
       <AddComment />
     )}
-    </>
+    </div>
 
   )
 }

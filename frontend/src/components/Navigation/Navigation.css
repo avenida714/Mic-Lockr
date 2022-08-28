@@ -2,3 +2,16 @@
   width: 20px;
   height: 20px;
 }
+
+.navBar-div {
+  display: flex;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.annoyingAnchor {
+  /* display: none; */
+
+  height: 0.1px;
+  width: 0.1px
+}

@@ -11,6 +11,7 @@ import Mics from "./components/Mics";
 import LookAtSingleMic from "./components/LookAtSingleMic";
 import AddMic from "./components/AddMic";
 import UpdateMic from "./components/UpdateMic";
+import FlexPage from "./components/FlexPage";
 
 
 
@@ -33,7 +34,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/'>
-            {personLoggedIn ? <Mics /> : null}
+            {personLoggedIn ? <Mics /> : <FlexPage />}
           </Route>
           <Route exact path='/mics/create'>
             {personLoggedIn ? <AddMic /> : <SignupFormPage />}

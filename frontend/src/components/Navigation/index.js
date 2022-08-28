@@ -25,15 +25,11 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <div>
-      <ul>
-      <li>
-        <NavLink exact to="/">
-          <img src={logo} alt="logo" width="40px" height="40px" margin='8px' border-radius= '12px'></img>
+    <div className="navBar-div">
+        <NavLink className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/>
         </NavLink>
+
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
     </div>
 
   );

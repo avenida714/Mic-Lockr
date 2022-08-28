@@ -4,6 +4,8 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import './loginFormStyling.css'
+
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -43,12 +45,15 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="loginFormOuter">
+    <form onSubmit={handleSubmit} className="formPieces">
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
+      <h2>Been Here Before? Log In to See the Lockr!</h2>
+      <h3>(Or You May Enter As Our Demo User)</h3>
       <label>
         Username or Email
         <input
@@ -70,6 +75,7 @@ function LoginForm() {
       <button type="submit">Log In</button>
       <button onClick={() => demoTapeLogin()}>DemoUser</button>
     </form>
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-.signupFormOuter {
+.loginFormOuter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   height: 600px;
 }
 
-.signupPieces {
+.formPieces {
 
     display: flex;
     flex-direction: column;
