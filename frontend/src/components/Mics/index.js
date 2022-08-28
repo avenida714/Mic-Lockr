@@ -49,7 +49,7 @@ function Mics() {
 if (personLoggedIn) {
   return (
     <>
-      <h1>Check Out The Mic Lockr!</h1>
+      <h1 className="headline">Welcome To The Mic Lockr!</h1>
       <div className="outerDiv">
       {micLockrMics.map((micObj) => {
       return (

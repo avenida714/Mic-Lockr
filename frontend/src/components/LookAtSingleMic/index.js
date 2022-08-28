@@ -93,7 +93,7 @@ if (personLoggedIn) {
 
 
   return personLoggedIn && (
-    <>
+    <div className='mostOuterDiv'>
       <div className='singleMicDiv'>
       <img className='micImage' src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title}  onClick={() => history.push('/')}></img>
       <h1>{currentlyViewingThisMic.title}</h1>
@@ -106,7 +106,7 @@ if (personLoggedIn) {
     {showCommentForm && (
       <AddComment />
     )}
-    </>
+    </div>
 
   )
 }

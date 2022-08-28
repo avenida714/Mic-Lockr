@@ -29,6 +29,11 @@ h3 {
   margin-bottom: 10px;
 }
 
+.headline{
+  font-size: 100px;
+
+}
+
 .img-holder{
   width: 20%;
   height: 20%;
@@ -59,4 +64,9 @@ h3 {
   flex-wrap: wrap;
   width: 100%;
   max-width: 1800px;
+  justify-content: center;
+}
+
+.headline {
+  text-align: center;
 }
