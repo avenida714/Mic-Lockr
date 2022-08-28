@@ -8,6 +8,7 @@ import { fetchMicsThunk } from '../../store/mics';
 
 import { updateMicThunk } from '../../store/mics';
 
+import './updateMic.css'
 
 function UpdateMic() {
 
@@ -70,8 +71,8 @@ const [title, setTitle] = useState('')
 
 
   return (
-    <>
-    <form onSubmit={e => handleSubmit(e)}>
+    <div className='editFormOuter'>
+    <form className='formPieces' onSubmit={e => handleSubmit(e)}>
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
@@ -103,7 +104,7 @@ const [title, setTitle] = useState('')
       <button onClick={() => (history.push('/'))}>Cancel</button>
     </form>
 
-    </>
+    </div>
   )
 }
 

@@ -10,6 +10,7 @@
 .singleMicDiv {
   display: flex;
   flex-direction: column;
+  max-width: 70vw;
 }
 
 body {
