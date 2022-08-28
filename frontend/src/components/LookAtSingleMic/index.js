@@ -96,11 +96,13 @@ if (personLoggedIn) {
     <div className='mostOuterDiv'>
       <div className='singleMicDiv'>
       <img className='micImage' src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title}  onClick={() => history.push('/')}></img>
-      <h1>{currentlyViewingThisMic.title}</h1>
-      <h2>{currentlyViewingThisMic.description}</h2>
+      <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
+      <h2 className='singleMicDescription'>{currentlyViewingThisMic.description}</h2>
     </div>
-    {editButton}
-    {deleteButton}
+    <div>
+      {editButton}{deleteButton}
+    </div>
+
     <Comments />
     {commentButton}
     {showCommentForm && (

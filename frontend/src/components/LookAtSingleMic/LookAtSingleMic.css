@@ -72,3 +72,10 @@ h3 {
   justify-content: center;
 
 }
+
+.mostOuterDiv {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

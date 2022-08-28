@@ -11,7 +11,9 @@ input{
 }
 
 textarea{
-  width: 80%
+  width: 600px;
+  height: 200px;
+  background-color:#fcf9ed
 }
 
 

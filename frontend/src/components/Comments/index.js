@@ -69,8 +69,8 @@ function Comments() {
   <div>
      {comments.map((commentObj) => {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
-      console.log('this is the comment obj ----->', commentObj)
-      return <div>
+      // console.log('this is the comment obj ----->', commentObj)
+      return <div className='commentDiv'>
         {/* {`${personLoggedIn.username} says: `} */}
         {commentObj.body}
         {thisIsMyComment ? <button onClick={
