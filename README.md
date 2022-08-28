@@ -1,5 +1,5 @@
 # Mic Lockr
-### Thank you for checking out MicLockr, my first full-stack web application based on Flickr.
+### Thank you for checking out Mic Lockr, my first solo full-stack web application based on Flickr.
 
 <p align="center">Live link: https://mic-lockr.herokuapp.com/</p>
 
