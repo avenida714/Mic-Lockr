@@ -32,7 +32,7 @@ a {
   background: linear-gradient(to bottom right, rgb(126, 122, 122), #fcf9ed);
   margin: 8px;
   border-radius: 12px;
-  color: #ffffff;
+  color: #540a0a;
   cursor: pointer;
   display: inline-block;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -85,7 +85,7 @@ button {
   background: linear-gradient(to bottom right, rgb(126, 122, 122), #fcf9ed);
   margin: 8px;
   border-radius: 12px;
-  color: #ffffff;
+  color: #540a0a;
   cursor: pointer;
   display: inline-block;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
