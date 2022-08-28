@@ -13,6 +13,14 @@
   max-width: 70vw;
 }
 
+.singleMicTitle{
+  align-self: center;
+}
+
+.singleMicDescription{
+  align-self: center;
+}
+
 body {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
