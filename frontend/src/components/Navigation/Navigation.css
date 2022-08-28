@@ -5,4 +5,12 @@
 
 .navBar-div {
   display: flex;
+  justify-content: space-between;
+}
+
+.annoyingAnchor {
+  /* display: none; */
+
+  height: 0.1px;
+  width: 0.1px
 }

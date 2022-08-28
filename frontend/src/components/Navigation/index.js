@@ -26,9 +26,7 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navBar-div">
-        <NavLink exact to="/">
-          SPLASH
-          {/* <img src={logo} alt="logo" width="100px" height="100px" margin='8px' border-radius= '12px'></img> */}
+        <NavLink className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/>
         </NavLink>
 
         {isLoaded && sessionLinks}
