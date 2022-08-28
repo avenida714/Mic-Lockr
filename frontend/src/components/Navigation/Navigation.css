@@ -15,3 +15,12 @@
   height: 0.1px;
   width: 0.1px
 }
+
+.profile-dropdown{
+  background-color: silver;
+  position: relative;
+}
+.profile-text {
+  background-color: rgb(209, 203, 203);
+
+}
