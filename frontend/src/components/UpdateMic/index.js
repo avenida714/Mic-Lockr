@@ -72,6 +72,7 @@ const [title, setTitle] = useState('')
 
   return (
     <div className='editFormOuter'>
+      <img clasName='editMicImg' src={currentlyEditingThisMic.imageURL} alt={currentlyEditingThisMic.title}></img>
     <form className='formPieces' onSubmit={e => handleSubmit(e)}>
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
@@ -82,7 +83,7 @@ const [title, setTitle] = useState('')
         type="text"
         value={imageURL}
         onChange={e => setImageURL(e.target.value)}
-        placeholder={currentlyEditingThisMic.imageURL}
+        text={currentlyEditingThisMic.imageURL}
       />
       <label>Title:</label>
       <input

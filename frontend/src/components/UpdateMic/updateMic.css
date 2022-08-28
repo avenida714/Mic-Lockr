@@ -4,5 +4,9 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 600px;
+  height: 1600px;
+}
+
+.editMicImg {
+  max-width: 50vu;
 }
