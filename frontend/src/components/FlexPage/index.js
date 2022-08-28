@@ -12,6 +12,16 @@ function FlexPage() {
       <h1 id='title'>mic lockr</h1>
       <h3 id='catchPhrase'>flex your vocal cords</h3>
       </div>
+      <div className='footer'>A PERN Stack Application by Alec Venida</div>
+      <div>
+        <a href='https://github.com/avenida714'>
+        <i className="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/alec-venida-66793979/">
+          <i className="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+
     </div>
   )
 }
