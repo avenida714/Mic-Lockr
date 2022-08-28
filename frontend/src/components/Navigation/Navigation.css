@@ -6,6 +6,7 @@
 .navBar-div {
   display: flex;
   justify-content: space-between;
+  min-height: 120px;
 }
 
 .annoyingAnchor {
