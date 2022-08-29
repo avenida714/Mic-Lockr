@@ -48,10 +48,30 @@
 # Technical Implementation
 
 ####
-
+I had an ongoing issue where viewing a single mic would return a blank screen upon refresh. This was because my return statement had been relying on my Redux store that was not hydrating fast enough. I was able to fix the issue using a short circuit (&& &&) before my return, giving enough time for the store to be there. 
 ####
 
-```
+```js
+return personLoggedIn && currentlyViewingThisMic && (
+    <div className='mostOuterDiv'>
+      <div className='singleMicDiv'>
+      <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
+      <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
+      <h2 className='singleMicDescription'>{currentlyViewingThisMic.description}</h2>
+    </div>
+    <div>
+      {editButton}{deleteButton}
+    </div>
+
+    <Comments />
+    {commentButton}
+    {showCommentForm && (
+      <AddComment />
+    )}
+    </div>
+
+  )
+}
 
 ```
 
