@@ -40,8 +40,7 @@
 
 ### Things to develop in the future:
 * I would love to add AWS integration
-* I would love for a user to be able to keep track of their own microphones.
-
+* I want to create personal Lockrs to allow users to keep track of mics that only they have added.
 
 
 
