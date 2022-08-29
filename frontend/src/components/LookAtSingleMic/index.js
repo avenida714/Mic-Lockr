@@ -19,9 +19,13 @@ import './LookAtSingleMic.css'
 
 function LookAtSingleMic() {
 
+const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(fetchMicsThunk())
+}, [dispatch])
 
   const micId = useParams().micId;
-  const dispatch = useDispatch();
+
   const mics = useSelector(state => state.mics)
 
   const currentlyViewingThisMic = mics[micId]
@@ -33,16 +37,6 @@ function LookAtSingleMic() {
 
 
 
-useEffect(() => {
-  dispatch(fetchMicsThunk())
-}, [dispatch])
-
-
-
-
-// const deleteThisMic = function (micForDestruction){
-//   dispatch(destroyMicThunk(micForDestruction))
-// }
 
 const deleteThisMic = async function (micForDestruction){
   dispatch(destroyMicThunk(micForDestruction))
@@ -52,7 +46,15 @@ const deleteThisMic = async function (micForDestruction){
 //~~~~~~~~~~~~~Delete button logic -------------
 let deleteButton;
 
-const thisIsMyMic = currentlyViewingThisMic.userId === personLoggedIn.id
+
+//TODO there is an issue here where refreshing will return a blank page.
+let thisIsMyMic;
+const matchedId = personLoggedIn.id
+
+if (currentlyViewingThisMic) {
+   thisIsMyMic = currentlyViewingThisMic.userId === matchedId
+}
+
 
 if (thisIsMyMic)  {
   deleteButton = (<button onClick={
@@ -92,10 +94,10 @@ if (personLoggedIn) {
 
 
 
-  return personLoggedIn && (
+  return personLoggedIn && currentlyViewingThisMic && (
     <div className='mostOuterDiv'>
       <div className='singleMicDiv'>
-      <img className='micImage' src={currentlyViewingThisMic?.imageURL} alt={currentlyViewingThisMic?.title}  onClick={() => history.push('/')}></img>
+      <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
       <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
       <h2 className='singleMicDescription'>{currentlyViewingThisMic.description}</h2>
     </div>

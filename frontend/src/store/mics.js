@@ -42,8 +42,6 @@ const updateMic = (mic) => {
 
 }
 
-
-
 //THUNK ACTION CREATORS
 //thunc action creator for fetching all the mics (this is the action)
 export const fetchMicsThunk = () => async dispatch => {
