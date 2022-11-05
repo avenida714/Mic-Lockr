@@ -101,12 +101,14 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
 router.post(
   "/create",
   singleMulterUpload("mic"), // arg is "name of key"
-  validateSignup,
-  asyncHandler(async (req, res) => {
-    const { userId } = req.body;
-    const micImageAWSUrl = await singlePublicFileUpload(req.file);
 
-    const mic = await db.Mic.create({micImageAWSUrl, userId});
+  asyncHandler(async (req, res) => {
+
+    console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files, req)
+    const { userId } = req.body;
+    const imageURL = await singlePublicFileUpload(req.files);
+
+    const mic = await db.Mic.create({imageURL, userId});
 
 
     return res.json(mic);

@@ -62,7 +62,7 @@ function AddMic() {
     <div className='addMicFormOuter'>
     <form className='formPieces'onSubmit={e => handleSubmit(e)}>
       <ul>
-        {errors.map((error, index) => <li key={index}>{error}</li>)}
+        {errors?.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
       <label>Upload Your Mic Image! Include a jpeg, jpg, png, or gif</label>
       <input className="uploadMicImage"
