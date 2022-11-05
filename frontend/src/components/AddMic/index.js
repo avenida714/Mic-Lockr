@@ -36,8 +36,13 @@ function AddMic() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const arrOfErrors = []
 
-    const formData = new FormData()
+    if (errors.length > 0) {
+      return alert("Cannot Submit");
+    }
+
+    const formData = new FormData();
 
     // formData.append("userId", personLoggedIn.id)
     formData.append("imageUrl", imageURL)
@@ -55,12 +60,20 @@ function AddMic() {
     // }
     console.log("THIS IS THE FORM DATA", formData)
 
-    await dispatch(createMicThunk(formData))
-      .then((newMic) => history.push(`/mics/${newMic.id}`))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && errors) setErrors(data.errors)
-      })
+    const response = await dispatch(createMicThunk(formData))
+      // .then((newMic) => history.push(`/mics/${newMic.id}`))
+      // .catch(async (res) => {
+      //   const data = await res.json();
+      //   if (data && errors) setErrors(data.errors)
+      // })
+
+    if (!response.ok) {
+      const body = await response.json();
+      arrOfErrors.push(body.errors)
+      setErrors(arrOfErrors)
+    }
+
+
   }
 
   const getMicImageFile = (e) => {
@@ -71,7 +84,7 @@ function AddMic() {
 
   return (
     <div className='addMicFormOuter'>
-    <form className='formPieces'onSubmit={e => handleSubmit(e)}>
+    <form className='formPieces'onSubmit={handleSubmit}>
       <ul>
         {errors?.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
@@ -86,16 +99,14 @@ function AddMic() {
       <input
         name="title"
         type="text"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="What microphone is it...?"
       />
       <label>Description:</label>
       <input
         name="description"
         type="text"
-        value={description}
-        onChange={e => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value)}
         placeholder="Tell us about this mic."
       />
       <button type="submit">Add Mic to the Lockr</button>
