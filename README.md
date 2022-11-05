@@ -40,18 +40,37 @@
 
 ### Things to develop in the future:
 * I would love to add AWS integration
-* I would love for a user to be able to keep track of their own microphones.
-
+* I want to create personal Lockrs to allow users to keep track of mics that only they have added.
 
 
 
 # Technical Implementation
 
 ####
-
+I had an ongoing issue where viewing a single mic would return a blank screen upon refresh. This was because my return statement had been relying on my Redux store that was not hydrating fast enough. I was able to fix the issue using a short circuit (&& &&) before my return, giving enough time for the store to be there. 
 ####
 
-```
+```js
+return personLoggedIn && currentlyViewingThisMic && (
+    <div className='mostOuterDiv'>
+      <div className='singleMicDiv'>
+      <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
+      <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
+      <h2 className='singleMicDescription'>{currentlyViewingThisMic.description}</h2>
+    </div>
+    <div>
+      {editButton}{deleteButton}
+    </div>
+
+    <Comments />
+    {commentButton}
+    {showCommentForm && (
+      <AddComment />
+    )}
+    </div>
+
+  )
+}
 
 ```
 
