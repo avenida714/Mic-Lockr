@@ -49,7 +49,7 @@ function AddMic() {
     formData.append("title", title)
     formData.append("description", description)
 
-
+    formData.append("What is going on", "wut")
 
     // const newMicForTheLockr = {
     //   userId: personLoggedIn.id,
@@ -66,6 +66,8 @@ function AddMic() {
       //   const data = await res.json();
       //   if (data && errors) setErrors(data.errors)
       // })
+
+    console.log("THIS IS THE RESPONSE", response)
 
     if (!response.ok) {
       const body = await response.json();
