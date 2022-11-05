@@ -14,15 +14,15 @@ const { requireAuth } = require('../../utils/auth');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 const micValidation = [
-  check('imageURL')
-    .notEmpty()
-    .withMessage("Don't give us nothing; please provide an image URL.")
-    .exists({checkFalsy: true})
-    .withMessage('Please give us a valid image URL.')
-    .isLength({max:255})
-    .withMessage('The max length for your URL should not exceed 255 characters, please.')
-    .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
-    .withMessage('This image link is not valid; Please provide a valid image link.'),
+  // check('imageURL')
+  //   .notEmpty()
+  //   .withMessage("Don't give us nothing; please provide an image URL.")
+  //   .exists({checkFalsy: true})
+  //   .withMessage('Please give us a valid image URL.')
+  //   .isLength({max:255})
+  //   .withMessage('The max length for your URL should not exceed 255 characters, please.')
+  //   .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
+  //   .withMessage('This image link is not valid; Please provide a valid image link.'),
   check('title')
     .notEmpty()
     .withMessage('Please give us a title.')
@@ -92,32 +92,29 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
   return res.json(req.body.id)
 }))
 
+
+
 //create a new mic
-router.post("/create", micValidation, requireAuth, asyncHandler(async function (req, res) {
-  const mic = await db.Mic.create(req.body)
-  return res.json(mic)
-}))
+// router.post("/create", micValidation, requireAuth, asyncHandler(async function (req, res) {
+//   const mic = await db.Mic.create(req.body)
+//   return res.json(mic)
+// }))
+
+
 
 //aws upload
 router.post(
-  "/",
-  singleMulterUpload("image"),
+  "/create",
+  singleMulterUpload("mic"), // arg is "name of key"
   validateSignup,
   asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({
-      username,
-      email,
-      password,
-      profileImageUrl,
-    });
+    const { userId } = req.body;
+    const micImageAWSUrl = await singlePublicFileUpload(req.file);
 
-    setTokenCookie(res, user);
+    const mic = await db.Mic.create({micImageAWSUrl, userId});
 
-    return res.json({
-      user,
-    });
+
+    return res.json(mic);
   })
 );
 
