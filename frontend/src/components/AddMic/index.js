@@ -42,25 +42,24 @@ function AddMic() {
       return alert("Cannot Submit");
     }
 
-    const formData = new FormData();
+    // const formData = new FormData();
 
-    // formData.append("userId", personLoggedIn.id)
-    formData.append("imageUrl", imageURL)
-    formData.append("title", title)
-    formData.append("description", description)
+    // // formData.append("userId", personLoggedIn.id)
+    // formData.append("imageUrl", imageURL)
+    // formData.append("title", title)
+    // formData.append("description", description)
 
-    formData.append("What is going on", "wut")
 
-    // const newMicForTheLockr = {
-    //   userId: personLoggedIn.id,
-    //   imageURL,
-    //   title,
-    //   description
+    const newMicForTheLockr = {
+      userId: personLoggedIn.id,
+      imageURL,
+      title,
+      description
 
-    // }
-    console.log("THIS IS THE FORM DATA", formData)
+    }
+    console.log("THIS IS THE FORM DATA", newMicForTheLockr)
 
-    const response = await dispatch(createMicThunk(formData))
+    const response = await dispatch(createMicThunk(newMicForTheLockr))
       // .then((newMic) => history.push(`/mics/${newMic.id}`))
       // .catch(async (res) => {
       //   const data = await res.json();
