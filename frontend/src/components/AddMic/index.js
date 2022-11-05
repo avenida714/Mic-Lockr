@@ -18,8 +18,12 @@ function AddMic() {
   //mics have title, description, imageURL
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [imageURL, setImageURL] = useState('')
+  const [imageURL, setImageURL] = useState(null)
   const [errors, setErrors] = useState([])
+
+
+
+
 
   //force the user to sign up if they access this page
   useEffect(() => {
@@ -31,6 +35,8 @@ function AddMic() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
 
     const newMicForTheLockr = {
       userId: personLoggedIn.id,
@@ -47,19 +53,23 @@ function AddMic() {
       })
   }
 
+  const getMicImageFile = (e) => {
+    const micFile = e.target.files[0]
+    setImageURL(micFile)
+  }
+
   return (
     <div className='addMicFormOuter'>
     <form className='formPieces'onSubmit={e => handleSubmit(e)}>
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
-      <label>Mic Image URL:</label>
-      <input
-        name="imageURL"
-        type="text"
-        value={imageURL}
-        onChange={e => setImageURL(e.target.value)}
-        placeholder="Paste the URL of your mic here..."
+      <label>Upload Your Mic Image! Include a jpeg, jpg, png, or gif</label>
+      <input className="uploadMicImage"
+        type="file"
+        accept="image/*"
+        onChange={getMicImageFile}
+        required
       />
       <label>Title:</label>
       <input

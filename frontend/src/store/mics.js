@@ -56,6 +56,7 @@ export const fetchMicsThunk = () => async dispatch => {
 
 //thunk AC to create a mic
 export const createMicThunk = (mic) => async dispatch => {
+  // const {AWSUrl, description, userId, title} = mic
   const res = await csrfFetch('/api/mics/create', {
     method: 'POST',
     body: JSON.stringify(mic)
@@ -67,6 +68,8 @@ export const createMicThunk = (mic) => async dispatch => {
     return mic;
   }
 }
+
+
 
 //thunk AC to delete a mic
 export const destroyMicThunk = (mic) => async dispatch => {
