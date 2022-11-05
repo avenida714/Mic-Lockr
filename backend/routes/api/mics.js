@@ -58,14 +58,11 @@ router.get('/:id', asyncHandler(async function (req, res) {
 
 //edit a mic image
 router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req, res) {
-  // const micPhotoId = parseInt(req.params.id, 10);   // using parseInt to get the actual ID of the micPhoto; not necessary because the id will come from the front end
-//  console.log(req.body)
+
 
  //remember that micId is just to find it, it is not part of the data to be sent back
   const {
     micId,
-    userId,
-    imageURL,
     title,
     description,
   } = req.body
@@ -75,8 +72,6 @@ router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req,
 
   const editedMicPhoto = targetedMicPhoto.update(
     {
-      userId,
-      imageURL,
       title,
       description,
     })
