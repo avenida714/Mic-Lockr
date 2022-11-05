@@ -37,17 +37,25 @@ function AddMic() {
     e.preventDefault();
 
 
+    const formData = new FormData()
 
-    const newMicForTheLockr = {
-      userId: personLoggedIn.id,
-      imageURL,
-      title,
-      description
+    // formData.append("userId", personLoggedIn.id)
+    formData.append("imageUrl", imageURL)
+    formData.append("title", title)
+    formData.append("description", description)
 
-    }
-    console.log("THIS IS THE NEWMICFORTHELOCKR", newMicForTheLockr)
 
-    await dispatch(createMicThunk(newMicForTheLockr))
+
+    // const newMicForTheLockr = {
+    //   userId: personLoggedIn.id,
+    //   imageURL,
+    //   title,
+    //   description
+
+    // }
+    console.log("THIS IS THE FORM DATA", formData)
+
+    await dispatch(createMicThunk(formData))
       .then((newMic) => history.push(`/mics/${newMic.id}`))
       .catch(async (res) => {
         const data = await res.json();

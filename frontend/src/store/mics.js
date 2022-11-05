@@ -55,11 +55,11 @@ export const fetchMicsThunk = () => async dispatch => {
 }
 
 //thunk AC to create a mic
-export const createMicThunk = (mic) => async dispatch => {
+export const createMicThunk = (formData) => async dispatch => {
   // const {AWSUrl, description, userId, title} = mic
   const res = await csrfFetch('/api/mics/create', {
     method: 'POST',
-    body: JSON.stringify(mic)
+    body: JSON.stringify(formData)
   })
 
   if (res.ok) {
