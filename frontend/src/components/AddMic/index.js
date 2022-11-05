@@ -45,6 +45,8 @@ function AddMic() {
       description
 
     }
+    console.log("THIS IS THE NEWMICFORTHELOCKR", newMicForTheLockr)
+
     await dispatch(createMicThunk(newMicForTheLockr))
       .then((newMic) => history.push(`/mics/${newMic.id}`))
       .catch(async (res) => {
@@ -55,6 +57,7 @@ function AddMic() {
 
   const getMicImageFile = (e) => {
     const micFile = e.target.files[0]
+    // console.log('THIS IS E.TARGET.FILES[0]', micFile)
     setImageURL(micFile)
   }
 

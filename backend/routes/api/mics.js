@@ -104,7 +104,7 @@ router.post(
 
   asyncHandler(async (req, res) => {
 
-    console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files, req)
+    // console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files)
     const { userId } = req.body;
     const imageURL = await singlePublicFileUpload(req.files);
 
