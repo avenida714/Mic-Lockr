@@ -57,7 +57,7 @@ function AddMic() {
       description
 
     }
-    console.log("THIS IS THE FORM DATA", newMicForTheLockr)
+    console.log("THIS IS THE FORM DATA FROM REACT", newMicForTheLockr)
 
     const response = await dispatch(createMicThunk(newMicForTheLockr))
       // .then((newMic) => history.push(`/mics/${newMic.id}`))
@@ -92,6 +92,7 @@ function AddMic() {
       <label>Upload Your Mic Image! Include a jpeg, jpg, png, or gif</label>
       <input className="uploadMicImage"
         type="file"
+        name="micName"
         accept="image/*"
         onChange={getMicImageFile}
         required

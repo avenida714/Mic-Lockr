@@ -55,13 +55,14 @@ export const fetchMicsThunk = () => async dispatch => {
 }
 
 //thunk AC to create a mic
-export const createMicThunk = (mic) => async dispatch => {
-  const {imageURL, description, title} = mic
+export const createMicThunk = (newMicForTheLockr) => async dispatch => {
+  const {imageURL, description, title, userId} = newMicForTheLockr
 
   const formData = new FormData();
 
-  // formData.append("userId", personLoggedIn.id)
-  if(imageURL) formData.append("imageUrl", imageURL)
+  formData.append("userId", userId)
+  // formData.append("micName", file)
+  if(imageURL) formData.append("micName", imageURL)
   formData.append("title", title)
   formData.append("description", description)
 

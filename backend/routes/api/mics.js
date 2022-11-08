@@ -95,17 +95,19 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
 //   return res.json(mic)
 // }))
 
-
+//double check the aws; check if aws bucket is set up properly; track where the data is coming from
 
 //aws upload
 router.post(
   "/create",
-  singleMulterUpload("imageURL"), // arg is "name of key"
+  singleMulterUpload("micName"), // arg is "name of key"
 
   asyncHandler(async (req, res) => {
 
     // console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files)
     const { userId, title, description } = req.body;
+
+    console.log("THIS IS THE REQ.FILES", req.files)
     const awsURL = await singlePublicFileUpload(req.files);
 
     const mic = await db.Mic.create({
