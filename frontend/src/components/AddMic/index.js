@@ -68,11 +68,11 @@ function AddMic() {
 
     console.log("THIS IS THE RESPONSE", response)
 
-    if (!response.ok) {
-      const body = await response.json();
-      arrOfErrors.push(body.errors)
-      setErrors(arrOfErrors)
-    }
+    // if (!response.ok) {
+    //   const body = await response.json();
+    //   arrOfErrors.push(body.errors)
+    //   setErrors(arrOfErrors)
+    // }
 
 
   }

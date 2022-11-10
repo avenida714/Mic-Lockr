@@ -11,7 +11,7 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
+const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3');
 
 const micValidation = [
   // check('imageURL')
@@ -100,25 +100,35 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
 //aws upload
 router.post(
   "/create",
-  singleMulterUpload("micName"), // arg is "name of key"
+  multipleMulterUpload("micName"), // arg is "name of key"
 
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, response) => {
 
     // console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files)
     const { userId, title, description } = req.body;
 
+    console.log("This is the userId", userId, "Title:", title, "Description:", description)
+
     console.log("THIS IS THE REQ.FILES", req.files)
-    const awsURL = await singlePublicFileUpload(req.files);
 
-    const mic = await db.Mic.create({
-      imageURL:{awsURL},
-      userId,
-      title,
-      description,
-    });
+    const awsURLs = await multiplePublicFileUpload(req.files);
+
+    const newMics = []
+
+    awsURLs.forEach(async(oneIndividualAWSURL) => {
+      const mic = await db.Mic.create({
+        imageURL:oneIndividualAWSURL,
+        userId,
+        title,
+        description,
+      })
+      newMics.push(mic)
+    })
 
 
-    return res.json(mic);
+
+
+    response.json(newMics);
   })
 );
 
