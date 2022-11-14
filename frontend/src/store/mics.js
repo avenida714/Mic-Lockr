@@ -66,7 +66,7 @@ export const createMicThunk = (newMicForTheLockr) => async dispatch => {
   formData.append("title", title)
   formData.append("description", description)
 
-  console.log("FORM DATA FROM THE THUNK~~~~~", formData)
+  // console.log("FORM DATA FROM THE THUNK~~~~~", formData)
 
   const response = await csrfFetch('/api/mics/create', {
     method: 'POST',

@@ -107,9 +107,9 @@ router.post(
     // console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files)
     const { userId, title, description } = req.body;
 
-    console.log("This is the userId", userId, "Title:", title, "Description:", description)
+    // console.log("This is the userId", userId, "Title:", title, "Description:", description)
 
-    console.log("THIS IS THE REQ.FILES", req.files)
+    // console.log("THIS IS THE REQ.FILES", req.files)
 
     const awsURLs = await multiplePublicFileUpload(req.files);
 

@@ -57,7 +57,7 @@ function AddMic() {
       description
 
     }
-    console.log("THIS IS THE FORM DATA FROM REACT", newMicForTheLockr)
+    // console.log("THIS IS THE FORM DATA FROM REACT", newMicForTheLockr)
 
     const response = await dispatch(createMicThunk(newMicForTheLockr))
       // .then((newMic) => history.push(`/mics/${newMic.id}`))
@@ -66,7 +66,7 @@ function AddMic() {
       //   if (data && errors) setErrors(data.errors)
       // })
 
-    console.log("THIS IS THE RESPONSE", response)
+    // console.log("THIS IS THE RESPONSE", response)
 
     // if (!response.ok) {
     //   const body = await response.json();
