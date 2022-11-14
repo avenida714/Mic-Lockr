@@ -1,4 +1,4 @@
-// store/mics.js
+
 
 import {csrfFetch} from './csrf'
 

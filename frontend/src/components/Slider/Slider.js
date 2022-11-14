@@ -1,7 +1,7 @@
-import { Carousel } from 'bootstrap'
+import { Carousel } from 'react-bootstrap'
 import React from 'react'
 
-function Slider() {
+function Slider({micLockrMics}) {
   return (
     <Carousel>
     <Carousel.Item interval={1000}>

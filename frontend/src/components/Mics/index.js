@@ -7,6 +7,7 @@ import { fetchMicsThunk } from "../../store/mics";
 import { useHistory } from "react-router-dom";
 
 import './mics.css'
+import Slider from "../Slider/Slider";
 
 function Mics() {
 
@@ -51,7 +52,8 @@ if (personLoggedIn) {
     <div className="parentLockrDiv">
       <h1 className="headline">Welcome To The Mic Lockr!</h1>
       <div className="outerDiv">
-      {micLockrMics.map((micObj) => {
+        <Slider micLockrMics={micLockrMics}/>
+      {/* {micLockrMics.map((micObj) => {
       return (
         <div key={micObj.id}>
         <div className="img-holder" key={micObj.id}>
@@ -59,7 +61,7 @@ if (personLoggedIn) {
         </div>
         </div>
       )
-    })}
+    })} */}
       </div>
     <div>
       {createButton}
