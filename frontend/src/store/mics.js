@@ -55,18 +55,33 @@ export const fetchMicsThunk = () => async dispatch => {
 }
 
 //thunk AC to create a mic
-export const createMicThunk = (mic) => async dispatch => {
-  const res = await csrfFetch('/api/mics/create', {
+export const createMicThunk = (newMicForTheLockr) => async dispatch => {
+  const {imageURL, description, title, userId} = newMicForTheLockr
+
+  const formData = new FormData();
+
+  formData.append("userId", userId)
+  // formData.append("micName", file)
+  if(imageURL) formData.append("micName", imageURL)
+  formData.append("title", title)
+  formData.append("description", description)
+
+  console.log("FORM DATA FROM THE THUNK~~~~~", formData)
+
+  const response = await csrfFetch('/api/mics/create', {
     method: 'POST',
-    body: JSON.stringify(mic)
+    headers: {"Content-Type": "multipart/form-data"},
+    body: formData
   })
 
-  if (res.ok) {
-    const mic = await res.json()
+  if (response.ok) {
+    const mic = await response.json()
     dispatch(addMic(mic))
     return mic;
   }
 }
+
+
 
 //thunk AC to delete a mic
 export const destroyMicThunk = (mic) => async dispatch => {

@@ -27,7 +27,7 @@ function UpdateMic() {
   // console.log('THIS IS MY MIC ID ----------->', micId)
   // console.log('THIS IS MY mics ----------->', mics)
   // console.log('CURRENTLY Editing THIS MIC ----------->', currentlyEditingThisMic)
-  console.log('this isthe person logged in----------->', personLoggedIn)
+  // console.log('this isthe person logged in----------->', personLoggedIn)
 
 
 useEffect(() => {
@@ -44,7 +44,7 @@ useEffect(() => {
 
 const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [imageURL, setImageURL] = useState('')
+  // const [imageURL, setImageURL] = useState('')
   const [errors, setErrors] = useState([])
 
 
@@ -54,7 +54,7 @@ const [title, setTitle] = useState('')
      const newMicData = {
       micId:currentlyEditingThisMic.id,
     userId: personLoggedIn.id,
-    imageURL: imageURL,
+    // imageURL: imageURL,
     title: title,
     description: description
   }
@@ -77,14 +77,14 @@ const [title, setTitle] = useState('')
       <ul>
         {errors.map((error, index) => <li key={index}>{error}</li>)}
       </ul>
-      <label>Mic Image URL:</label>
-      <input
+      {/* <label>Mic Image URL:</label> */}
+      {/* <input
         name="imageURL"
         type="text"
         value={imageURL}
         onChange={e => setImageURL(e.target.value)}
         defaultValue={currentlyEditingThisMic.imageURL}
-      />
+      /> */}
       <label>Title:</label>
       <input
         name="title"

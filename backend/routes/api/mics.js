@@ -11,18 +11,18 @@ const { check } = require('express-validator');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { requireAuth } = require('../../utils/auth');
-const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
+const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3');
 
 const micValidation = [
-  check('imageURL')
-    .notEmpty()
-    .withMessage("Don't give us nothing; please provide an image URL.")
-    .exists({checkFalsy: true})
-    .withMessage('Please give us a valid image URL.')
-    .isLength({max:255})
-    .withMessage('The max length for your URL should not exceed 255 characters, please.')
-    .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
-    .withMessage('This image link is not valid; Please provide a valid image link.'),
+  // check('imageURL')
+  //   .notEmpty()
+  //   .withMessage("Don't give us nothing; please provide an image URL.")
+  //   .exists({checkFalsy: true})
+  //   .withMessage('Please give us a valid image URL.')
+  //   .isLength({max:255})
+  //   .withMessage('The max length for your URL should not exceed 255 characters, please.')
+  //   .matches(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) //(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?  (try this one if the first doesn't work)
+  //   .withMessage('This image link is not valid; Please provide a valid image link.'),
   check('title')
     .notEmpty()
     .withMessage('Please give us a title.')
@@ -58,14 +58,11 @@ router.get('/:id', asyncHandler(async function (req, res) {
 
 //edit a mic image
 router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req, res) {
-  // const micPhotoId = parseInt(req.params.id, 10);   // using parseInt to get the actual ID of the micPhoto; not necessary because the id will come from the front end
-//  console.log(req.body)
+
 
  //remember that micId is just to find it, it is not part of the data to be sent back
   const {
     micId,
-    userId,
-    imageURL,
     title,
     description,
   } = req.body
@@ -75,8 +72,6 @@ router.put('/:id', micValidation, requireAuth, asyncHandler(async function (req,
 
   const editedMicPhoto = targetedMicPhoto.update(
     {
-      userId,
-      imageURL,
       title,
       description,
     })
@@ -92,32 +87,48 @@ router.delete('/delete', requireAuth, asyncHandler(async function (req, res) {
   return res.json(req.body.id)
 }))
 
+
+
 //create a new mic
-router.post("/create", micValidation, requireAuth, asyncHandler(async function (req, res) {
-  const mic = await db.Mic.create(req.body)
-  return res.json(mic)
-}))
+// router.post("/create", micValidation, requireAuth, asyncHandler(async function (req, res) {
+//   const mic = await db.Mic.create(req.body)
+//   return res.json(mic)
+// }))
+
+//double check the aws; check if aws bucket is set up properly; track where the data is coming from
 
 //aws upload
 router.post(
-  "/",
-  singleMulterUpload("image"),
-  validateSignup,
-  asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const profileImageUrl = await singlePublicFileUpload(req.file);
-    const user = await User.signup({
-      username,
-      email,
-      password,
-      profileImageUrl,
-    });
+  "/create",
+  multipleMulterUpload("micName"), // arg is "name of key"
 
-    setTokenCookie(res, user);
+  asyncHandler(async (req, response) => {
 
-    return res.json({
-      user,
-    });
+    // console.log('THIS IS THE REQ.FILES FROM THE FRONTEND, THIS IS IN THE MICS API ROUTE', req.files)
+    const { userId, title, description } = req.body;
+
+    console.log("This is the userId", userId, "Title:", title, "Description:", description)
+
+    console.log("THIS IS THE REQ.FILES", req.files)
+
+    const awsURLs = await multiplePublicFileUpload(req.files);
+
+    const newMics = []
+
+    awsURLs.forEach(async(oneIndividualAWSURL) => {
+      const mic = await db.Mic.create({
+        imageURL:oneIndividualAWSURL,
+        userId,
+        title,
+        description,
+      })
+      newMics.push(mic)
+    })
+
+
+
+
+    response.json(newMics);
   })
 );
 
