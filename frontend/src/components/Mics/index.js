@@ -51,18 +51,24 @@ if (personLoggedIn) {
   return (
     <div className="parentLockrDiv">
       <h1 className="headline">Welcome To The Mic Lockr!</h1>
-      <div className="outerDiv">
-        <Slider micLockrMics={micLockrMics}/>
-      {/* {micLockrMics.map((micObj) => {
+      <main id="main" data-aos="fade" data-aos-delay="1500">
+      <section className="gallery" id="gallery">
+        <div className="container-fluid">
+        {/* <Slider micLockrMics={micLockrMics}/> */}
+      {micLockrMics.map((micObj) => {
       return (
-        <div key={micObj.id}>
-        <div className="img-holder" key={micObj.id}>
-          <img className="micImages" src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
+        <div key={micObj.id} className="row gy-4 justify-content-center">
+        <div className="col-xl-3 col-lg-4 col-md-6" key={micObj.id}>
+          <div className="gallery-item h-100">
+          <img className="img-fluid" src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img>
+          </div>
         </div>
         </div>
       )
-    })} */}
-      </div>
+    })}
+    </div>
+      </section>
+      </main>
     <div>
       {createButton}
     </div>
