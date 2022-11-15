@@ -13,6 +13,10 @@ import AddMic from "./components/AddMic";
 import UpdateMic from "./components/UpdateMic";
 import FlexPage from "./components/FlexPage";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import bootstrap from 'bootstrap' ;
+
+
 
 
 function App() {
