@@ -1,11 +1,11 @@
 
 
 
-* {
+/* * {
   margin: 2px;
   padding: 2px;
   background-color: rgb(240, 238, 238);
-}
+} */
 
 .singleMicDiv {
   display: flex;

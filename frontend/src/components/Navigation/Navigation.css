@@ -1,7 +1,7 @@
-.img{
+/* .img{
   width: 20px;
   height: 20px;
-}
+} */
 
 .navBar-div {
   display: flex;
@@ -9,12 +9,7 @@
   min-height: 120px;
 }
 
-.annoyingAnchor {
-  /* display: none; */
 
-  height: 0.1px;
-  width: 0.1px
-}
 
 .profile-dropdown{
   background-color: silver;
