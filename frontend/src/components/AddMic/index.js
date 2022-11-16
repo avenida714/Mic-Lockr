@@ -60,11 +60,11 @@ function AddMic() {
     // console.log("THIS IS THE FORM DATA FROM REACT", newMicForTheLockr)
 
     const response = await dispatch(createMicThunk(newMicForTheLockr))
-      // .then((newMic) => history.push(`/mics/${newMic.id}`))
-      // .catch(async (res) => {
-      //   const data = await res.json();
-      //   if (data && errors) setErrors(data.errors)
-      // })
+      .then((newMicForTheLockr) => history.push(`/`))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && errors) setErrors(data.errors)
+      })
 
     // console.log("THIS IS THE RESPONSE", response)
 

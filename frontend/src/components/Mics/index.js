@@ -31,7 +31,7 @@ function Mics() {
   let micLockrMics
 
   if (mics) {
-   micLockrMics = Object.values(mics)
+   micLockrMics = Object.values(mics).reverse()
   }
 
 
