@@ -26,8 +26,8 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navBar-div">
-        <NavLink className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/>
-        </NavLink>
+        <i className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/>
+        </i>
 
         {isLoaded && sessionLinks}
     </div>
