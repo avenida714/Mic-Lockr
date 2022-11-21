@@ -6,7 +6,7 @@ import sm7b from './sm7b.jpeg'
 
 function FlexPage() {
   return (
-    <div className='homeMicContainer'>
+    <div className='homeMicContainer' data-aos="fade" data-aos-delay="1500">
       <img className='sm7b-Flex' src={sm7b} alt="sm7b" width="100%"></img>
       <div className='centered'>
       <h1 id='title'>mic lockr</h1>
