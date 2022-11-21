@@ -1,6 +1,6 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -36,16 +36,16 @@ function Navigation({ isLoaded }){
     <div id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="/" class="logo d-flex align-items-center  me-auto me-lg-0">
+      <NavLink to="/" class="logo d-flex align-items-center  me-auto me-lg-0">
 
       {/* <img src="assets/img/logo.png" alt="">  */}
       <i className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/></i>
         <h1>Mic-Lockr</h1>
-      </a>
+      </NavLink>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="/" class="active">Home</a></li>
+          <li><NavLink to="/" class="active">Home</NavLink></li>
           {/* <li><a href="about.html">About</a></li>
           <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
