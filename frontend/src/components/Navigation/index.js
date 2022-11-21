@@ -39,14 +39,14 @@ function Navigation({ isLoaded }){
       <a href="/" class="logo d-flex align-items-center  me-auto me-lg-0">
 
       {/* <img src="assets/img/logo.png" alt="">  */}
-        <i class="bi bi-camera"></i>
+      <i className="annoyingAnchor" exact to="/"><img src={logo} height="60px" width="60px"alt="logo"/></i>
         <h1>Mic-Lockr</h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="/" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          {/* <li><a href="about.html">About</a></li>
           <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="gallery.html">Nature</a></li>
@@ -65,7 +65,7 @@ function Navigation({ isLoaded }){
             </ul>
           </li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li> */}
         </ul>
       </nav>
 
