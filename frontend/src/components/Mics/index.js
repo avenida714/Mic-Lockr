@@ -57,7 +57,7 @@ function Mics() {
                     <div className="col-xl-3 col-lg-4 col-md-6" key={micObj.id} >
                       <div className="gallery-item h-100" >
                         {/* <img className="img-fluid" src={micObj.imageURL} key={micObj.id} alt={micObj.title} onClick={() => history.push(`/mics/${micObj.id}`)}></img> */}
-                        <div style={{ backgroundImage:`url(${micObj.imageURL})`, height: 500, width: 600, backgroundSize: "100% 100%", backgroundPosition: "cover", backgroundRepeat: "no-repeat"}}
+                        <div className="img-fluid" style={{ backgroundImage:`url(${micObj.imageURL})`, height: 400, width: 800, backgroundSize: "100% 100%", backgroundPosition: "cover", backgroundRepeat: "no-repeat"}}
                       onClick={() => history.push(`/mics/${micObj.id}`)}></div>
                       </div>
                     </div>
