@@ -46,17 +46,17 @@ function LoginForm() {
 
   return (
     <div className="loginFormOuter">
-    <form onSubmit={handleSubmit} className="formPieces">
+    <form onSubmit={handleSubmit} className="formPieces php-email-form">
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <h2>Been Here Before? Log In to See the Lockr!</h2>
-      <h3>(Or You May Enter As Our Demo User)</h3>
+      <h2 className="blurb">Been Here Before? Log In to See the Lockr!</h2>
+      <h3 className="blurb">(Or you may enter as our Demo User)</h3>
       <label>
         Username or Email
-        <input
+        <input className="form-control"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
@@ -65,7 +65,7 @@ function LoginForm() {
       </label>
       <label>
         Password
-        <input
+        <input className="form-control"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 600px;
+  height: 900px;
 }
 
 .signupPieces {
@@ -20,4 +20,5 @@
 
     border: 1px solid #f4efef;
     border-radius: 25px;
+    align-items: center;
 }

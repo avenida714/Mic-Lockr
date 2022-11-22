@@ -32,13 +32,13 @@ function SignupFormPage() {
 
   return (
     <div className="signupFormOuter">
-    <form onSubmit={handleSubmit} className="signupPieces">
+    <form onSubmit={handleSubmit} className="signupPieces php-email-form">
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
         Email
-        <input
+        <input className="form-control"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -47,7 +47,7 @@ function SignupFormPage() {
       </label>
       <label>
         Username
-        <input
+        <input className="form-control"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -56,7 +56,7 @@ function SignupFormPage() {
       </label>
       <label>
         Password
-        <input
+        <input className="form-control"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -65,7 +65,7 @@ function SignupFormPage() {
       </label>
       <label>
         Confirm Password
-        <input
+        <input className="form-control"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
