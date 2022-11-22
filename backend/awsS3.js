@@ -11,7 +11,7 @@ const multer = require("multer");
 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 
-// --------------------------- Public UPLOAD ------------------------
+// --------------------------- Public UPLOAD -----------------------
 
 const singlePublicFileUpload = async (file) => {
   console.log("THIS IS THE FILE COMING INTO AWS ~~~~~", file)
