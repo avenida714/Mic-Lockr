@@ -103,10 +103,8 @@ useEffect(() => {
   if (!transitionTimer) {
     setTimeout(function() {
       setTransitionTimer(true);
-    }, 3000)
+    }, 2000)
   }
-
-
 
 },[transitionTimer])
 
