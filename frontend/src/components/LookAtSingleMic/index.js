@@ -95,6 +95,8 @@ if (personLoggedIn) {
 
 
   return personLoggedIn && currentlyViewingThisMic && (
+    <>
+
     <div className='mostOuterDiv'>
       <div className='singleMicDiv'>
       <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
@@ -110,8 +112,14 @@ if (personLoggedIn) {
     {showCommentForm && (
       <AddComment />
     )}
-    </div>
 
+<button href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></button>
+
+    </div>
+    <div id="preloader">
+    <div class="line"></div>
+  </div>
+ </>
   )
 }
 
