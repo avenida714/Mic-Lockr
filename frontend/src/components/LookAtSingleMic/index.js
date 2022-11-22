@@ -28,7 +28,7 @@ useEffect(() => {
 
   const mics = useSelector(state => state.mics)
 
-  const currentlyViewingThisMic = mics[micId]
+  let currentlyViewingThisMic = mics[micId]
   // console.log('this is the mic ------> ',currentlyViewingThisMic)
 
   const personLoggedIn = useSelector(state => state.session.user)
@@ -93,10 +93,30 @@ if (personLoggedIn) {
 }
 
 
+const [transitionTimer, setTransitionTimer] = useState(false)
 
-  return personLoggedIn && currentlyViewingThisMic && (
-    <>
 
+
+
+
+useEffect(() => {
+  if (!transitionTimer) {
+    setTimeout(function() {
+      setTransitionTimer(true);
+    }, 3000)
+  }
+
+
+
+},[transitionTimer])
+
+
+
+
+  return transitionTimer && personLoggedIn && currentlyViewingThisMic ? (
+    <div id="main" data-aos="fade" data-aos-delay="1000" className="aos-init aos-animate">
+          <main id="main" data-aos="fade" data-aos-delay="1000" className="aos-init aos-animate">
+          <section className="gallery" id="gallery"></section>
     <div className='mostOuterDiv'>
       <div className='singleMicDiv'>
       <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
@@ -116,11 +136,13 @@ if (personLoggedIn) {
 <button href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></button>
 
     </div>
-    <div id="preloader">
-    <div class="line"></div>
-  </div>
- </>
-  )
+    </main>
+
+ </div>
+  ) :
+  <div id="preloader">
+  <div class="line"></div>
+</div>
 }
 
 export default LookAtSingleMic
