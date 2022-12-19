@@ -8,6 +8,9 @@ import { useHistory } from "react-router-dom";
 
 import "./mics.css";
 import Slider from "../Slider/Slider";
+import { Dropdown } from "react-bootstrap";
+
+import DropdownButton from "../DropdownButton";
 
 function Mics() {
   const dispatch = useDispatch();
@@ -68,6 +71,7 @@ function Mics() {
           </section>
         </main>
         <div>{createButton}</div>
+        <DropdownButton />
       </div>
     );
   }
