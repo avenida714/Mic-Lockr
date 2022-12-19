@@ -59,7 +59,7 @@ if (currentlyViewingThisMic) {
 if (thisIsMyMic)  {
   deleteButton = (<button onClick={
     () => deleteThisMic(currentlyViewingThisMic)
-  .then(history.push('/'))}>Delete This Mic</button> )
+  .then(history.push('/'))}>Delete</button> )
   } else {
     deleteButton = null
   }
@@ -76,7 +76,7 @@ let editButton;
 
 if (thisIsMyMic) {
   editButton = (<button onClick={
-    () => history.push(`/mics/${currentlyViewingThisMic.id}/edit`)}>Edit This Mic</button> )
+    () => history.push(`/mics/${currentlyViewingThisMic.id}/edit`)}>Edit</button> )
 } else {
   editButton = null;
 }
@@ -89,7 +89,7 @@ const [showCommentForm, setShowCommentForm] = useState(false)
 let commentButton
 
 if (personLoggedIn) {
-  commentButton = (<button onClick={() => setShowCommentForm(true)}>Write A Comment</button> )
+  commentButton = (<button onClick={() => setShowCommentForm(true)}>Comment</button> )
 }
 
 
