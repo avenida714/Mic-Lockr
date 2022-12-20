@@ -1,3 +1,7 @@
+// import GLightbox from 'glightbox';
+// import Swiper from 'swiper';
+// import AOS from "aos"
+
 /**
 * Template Name: PhotoFolio - v1.1.1
 * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
