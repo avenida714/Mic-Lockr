@@ -60,7 +60,7 @@ function AddComment() {
       placeholder="What are your thoughts on this Microphone?"
       required
       />
-      <button className='submit-button' type="submit">Submit Comment</button>
+      <button className='submit-button' type="submit">Submit</button>
       </div>
 
     </form>
