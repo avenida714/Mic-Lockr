@@ -71,7 +71,7 @@ function Mics() {
           </section>
         </main>
         <div>{createButton}</div>
-        <DropdownButton />
+
       </div>
     );
   }
