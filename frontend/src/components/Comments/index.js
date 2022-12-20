@@ -24,6 +24,8 @@ function Comments() {
      comments = Object.values(allCommentsInObj)
   }
 
+  const chronologicalComments = [...comments].reverse();
+
   const mics = useSelector(state => state.mics)
   const currentlyViewingThisMic = mics[micId]
 
@@ -67,11 +69,11 @@ function Comments() {
   let commentTable;
   personLoggedIn && allCommentsInObj ? commentTable =  <div>
   <div>
-     {comments.map((commentObj, i) => {
+     {chronologicalComments.map((commentObj, i) => {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
       // console.log('this is the comment obj ----->', commentObj)
       return <div className='commentDiv' key={i}>
-        {/* {`${personLoggedIn.username} says: `} */}
+        {`${commentObj.userId} says: `}
         {commentObj.body}
         {thisIsMyComment ? <button onClick={
     () => deleteThisComment(commentObj)}>DELETE</button> : null}
