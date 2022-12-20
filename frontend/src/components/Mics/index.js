@@ -49,7 +49,7 @@ function Mics() {
   if (personLoggedIn) {
     return (
       <div className="parentLockrDiv">
-        <h1 className="headline">Welcome To The Mic Lockr!</h1>
+        {/* <h1 className="headline">Welcome To The Mic Lockr!</h1> */}
         <main id="main" data-aos="fade" data-aos-delay="1000">
           <section className="gallery" id="gallery">
             <div className="container-fluid">
