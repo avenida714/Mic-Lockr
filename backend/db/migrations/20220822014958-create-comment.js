@@ -22,11 +22,11 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false
       },
-      userName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        references: { model: 'Users', key: 'username'}
-      },
+      // userName: {
+      //   type: Sequelize.STRING,
+      //   allowNull: false,
+      //   references: { model: 'Users', key: 'username'}
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -73,7 +73,7 @@ function Comments() {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
       // console.log('this is the comment obj ----->', commentObj)
       return <div className='commentDiv' key={i}>
-        {`${commentObj.userId} says: `}
+        {`${commentObj.User.username} says: `}
         {commentObj.body}
         {thisIsMyComment ? <button onClick={
     () => deleteThisComment(commentObj)}>DELETE</button> : null}

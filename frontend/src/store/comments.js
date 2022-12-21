@@ -60,7 +60,7 @@ export const fetchCommentsThunk = (talkingAboutThisMic) => async dispatch => {
     const comments = await response.json();
     // console.log('these are the comments ------->', comments)
     dispatch(loadComments(comments))
-    console.log(comments)
+    // console.log(comments)
     return comments;
   }
 }
