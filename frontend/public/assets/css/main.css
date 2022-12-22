@@ -343,6 +343,7 @@ h6 {
   font-size: 32px;
   margin-right: 8px;
   line-height: 0;
+  padding-left: 30px;
 }
 
 @media (max-width: 575px) {
