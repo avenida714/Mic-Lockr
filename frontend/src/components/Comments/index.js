@@ -44,7 +44,7 @@ function Comments() {
 
 
 
-  }, [dispatch, currentlyViewingThisMic])
+  }, [dispatch, currentlyViewingThisMic,])
 
 
 
