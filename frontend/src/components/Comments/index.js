@@ -1,6 +1,6 @@
 //components/Comments
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -22,19 +22,31 @@ function Comments() {
   let comments;
   if(allCommentsInObj) {
      comments = Object.values(allCommentsInObj)
-  }
 
-  const mics = useSelector(state => state.mics)
+  }
+  //write this is a way to make comments rerender?
+
+
+  const chronologicalComments = [...comments].reverse();
+
+  let mics = useSelector(state => state.mics)
   const currentlyViewingThisMic = mics[micId]
 
   const personLoggedIn = useSelector(state => state.session.user)
 
 // console.log('this is the person logged in  --------->', personLoggedIn.username)
 
+const [isLoaded, setIsLoaded] = useState(false)
+
+
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
 
-  }, [dispatch, currentlyViewingThisMic])
+    setIsLoaded(true)
+
+
+
+  }, [dispatch, currentlyViewingThisMic, isLoaded])
 
 
 
@@ -67,14 +79,24 @@ function Comments() {
   let commentTable;
   personLoggedIn && allCommentsInObj ? commentTable =  <div>
   <div>
-     {comments.map((commentObj, i) => {
+     {chronologicalComments.map((commentObj, i) => {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
+      let commentName;
+      commentName = commentObj?.User?.username ? commentObj.User.username : personLoggedIn.username
       // console.log('this is the comment obj ----->', commentObj)
-      return <div className='commentDiv' key={i}>
-        {/* {`${personLoggedIn.username} says: `} */}
-        {commentObj.body}
-        {thisIsMyComment ? <button onClick={
-    () => deleteThisComment(commentObj)}>DELETE</button> : null}
+      return <div className='comment-div' key={i}>
+        <div className='they-say'>
+          {`${commentName} says: `}
+          </div>
+          <div className='comment-body'>
+            {commentObj.body}
+            {thisIsMyComment ? <button className='trash-button' onClick={
+    () => deleteThisComment(commentObj)}>
+     <i className="fa-solid fa-trash-can"></i>
+    </button> : null}
+          </div>
+
+
       </div>
 
      })}
@@ -86,7 +108,7 @@ function Comments() {
 
 
 
-   return (
+   return isLoaded && (
     <div className="commentBox" height="400px" width="400px">
     {commentTable}
     </div>

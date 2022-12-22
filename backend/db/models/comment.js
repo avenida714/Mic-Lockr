@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', { //singular not plural
     userId: DataTypes.INTEGER,
     micId: DataTypes.INTEGER,
-    body: DataTypes.STRING
+    body: DataTypes.STRING,
+    // userName: DataTypes.STRING
   }, {});
 
   Comment.associate = function(models) {

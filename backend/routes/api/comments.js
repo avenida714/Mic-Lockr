@@ -1,6 +1,11 @@
+
+
 const express = require('express');
 const router = express.Router();
 const db = require('../../db/models')
+
+const {User} = require('../../db/models')
+
 const {handleValidationErrors} = require('../../utils/validation')
 const { check } = require('express-validator')
 const {requireAuth} = require('../../utils/auth')
@@ -22,8 +27,24 @@ const validateComment = [
 
 //get all the comments of a mic
 router.get('/:micId', asyncHandler(async function (req, res) {
+
+
   const micId = req.params.micId;
-  const micComments = await db.Comment.findAll({where: {micId}})
+  const micComments = await db.Comment.findAll({
+    where: {micId},
+    include: {
+          model: User
+     }
+  })
+
+
+  // for (let comment of micComments) {
+  //   comment.userName = await db.User.findByPk(comment.userId)
+  // }
+  // micComments.forEach( comment => {
+  //   comment.userName = db.User.findByPk(comment.userId)
+  // })
+
   return res.json(micComments)
 }))
 
@@ -31,10 +52,11 @@ router.get('/:micId', asyncHandler(async function (req, res) {
 router.post('/create', validateComment, requireAuth, asyncHandler(async function(req, res) {
   const {userId, micId, body} = req.body
 
-  const comment = await db.Comment.build({  //flagx might need to add info to remember the user of this comment
+  const comment = await db.Comment.build({
     userId,
     body,
-    micId
+    micId,
+    // userName
   })
 
   const userNewComment = await comment.save()

@@ -81,9 +81,10 @@ h3 {
 
 }
 
-.mostOuterDiv {
+.most-outer-div {
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 85px;
 }

@@ -2,6 +2,7 @@
   max-width: 100%;
   position: relative;
   text-align: center;
+  padding-top: 85px;
 
 }
 
@@ -24,4 +25,8 @@ color:rgb(247, 240, 231)
 #catchPhrase {
   background-color: black;
   color:rgb(254, 251, 246)
+}
+
+.fa-github {
+  padding: 8px;
 }

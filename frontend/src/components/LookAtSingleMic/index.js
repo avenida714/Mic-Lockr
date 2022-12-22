@@ -115,7 +115,7 @@ useEffect(() => {
     <div id="main" data-aos="fade" data-aos-delay="1000" className="aos-init aos-animate">
           <main id="main" data-aos="fade" data-aos-delay="1000" className="aos-init aos-animate">
           <section className="gallery" id="gallery"></section>
-    <div className='mostOuterDiv'>
+    <div className='most-outer-div'>
       <div className='singleMicDiv'>
       <img className='micImage' src={currentlyViewingThisMic.imageURL} alt={currentlyViewingThisMic.title}  onClick={() => history.push('/')}></img>
       <h1 className='singleMicTitle'>{currentlyViewingThisMic.title}</h1>
