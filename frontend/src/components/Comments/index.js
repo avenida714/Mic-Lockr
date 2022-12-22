@@ -1,6 +1,6 @@
 //components/Comments
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -22,19 +22,27 @@ function Comments() {
   let comments;
   if(allCommentsInObj) {
      comments = Object.values(allCommentsInObj)
+
   }
+  //write this is a way to make comments rerender?
+
+  console.log("THIS IS THE COMMENTS", comments)
 
   const chronologicalComments = [...comments].reverse();
 
-  const mics = useSelector(state => state.mics)
+  let mics = useSelector(state => state.mics)
   const currentlyViewingThisMic = mics[micId]
 
   const personLoggedIn = useSelector(state => state.session.user)
 
 // console.log('this is the person logged in  --------->', personLoggedIn.username)
 
+
+
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
+
+
 
   }, [dispatch, currentlyViewingThisMic])
 
@@ -73,7 +81,7 @@ function Comments() {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
       // console.log('this is the comment obj ----->', commentObj)
       return <div className='commentDiv' key={i}>
-        {`${commentObj.User.username} says: `}
+        {`${commentObj?.User?.username} says: `}
         {commentObj.body}
         {thisIsMyComment ? <button onClick={
     () => deleteThisComment(commentObj)}>DELETE</button> : null}
