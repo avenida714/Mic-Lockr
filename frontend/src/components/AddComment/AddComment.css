@@ -8,6 +8,15 @@ color: black;
   max-height: 40px;
 }
 
+.error-msg {
+  color: red;
+}
+
 .comment-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 30px;
 
 }

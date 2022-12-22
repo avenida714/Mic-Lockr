@@ -49,7 +49,7 @@ function AddComment() {
     <>
     <form onSubmit={handleSubmit}>
     <ul>
-        {errors.map((error, index) => <li key={index}>{error}</li>)}
+        {errors.map((error, index) => <li className='error-msg' key={index}>{error}</li>)}
       </ul>
       <div className='comment-container'>
          <label>Comment On This Mic!</label>
