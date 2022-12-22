@@ -26,7 +26,6 @@ function Comments() {
   }
   //write this is a way to make comments rerender?
 
-  console.log("THIS IS THE COMMENTS", comments)
 
   const chronologicalComments = [...comments].reverse();
 
@@ -37,14 +36,17 @@ function Comments() {
 
 // console.log('this is the person logged in  --------->', personLoggedIn.username)
 
+const [isLoaded, setIsLoaded] = useState(false)
 
 
   useEffect(() => {
     dispatch(fetchCommentsThunk(currentlyViewingThisMic))
 
+    setIsLoaded(true)
 
 
-  }, [dispatch, currentlyViewingThisMic,])
+
+  }, [dispatch, currentlyViewingThisMic, isLoaded])
 
 
 
@@ -79,9 +81,11 @@ function Comments() {
   <div>
      {chronologicalComments.map((commentObj, i) => {
       const thisIsMyComment = commentObj.userId === personLoggedIn.id
+      let commentName;
+      commentName = commentObj?.User?.username ? commentObj.User.username : personLoggedIn.username
       // console.log('this is the comment obj ----->', commentObj)
       return <div className='commentDiv' key={i}>
-        {`${commentObj?.User?.username} says: `}
+        {`${commentName} says: `}
         {commentObj.body}
         {thisIsMyComment ? <button onClick={
     () => deleteThisComment(commentObj)}>DELETE</button> : null}
@@ -96,7 +100,7 @@ function Comments() {
 
 
 
-   return (
+   return isLoaded && (
     <div className="commentBox" height="400px" width="400px">
     {commentTable}
     </div>
