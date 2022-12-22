@@ -52,7 +52,7 @@ function AddComment() {
         {errors.map((error, index) => <li className='error-msg' key={index}>{error}</li>)}
       </ul>
       <div className='comment-container'>
-         <label>Comment On This Mic!</label>
+         <label className='comment-label'>Comment On This Mic!</label>
       <textarea className='comment-text-area'
       type="textarea"
       value={comment}

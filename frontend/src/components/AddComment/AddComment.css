@@ -1,6 +1,6 @@
 .comment-text-area {
 color: black;
-
+margin: 20px;
 }
 
 .submit-button {
@@ -19,4 +19,13 @@ color: black;
   flex-direction: column;
   padding-top: 30px;
 
+}
+
+.comment-label {
+  font-size: 30px;
+}
+
+.comment-div {
+  font-size: 28px;
+  margin: 20px;
 }
