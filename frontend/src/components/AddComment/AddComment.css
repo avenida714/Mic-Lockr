@@ -25,7 +25,36 @@ margin: 20px;
   font-size: 30px;
 }
 
+.commentBox {
+  width: 75vw;
+}
+
 .comment-div {
   font-size: 28px;
   margin: 20px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  justify-content: space-around;
+}
+
+.they-say {
+  color: rgb(249, 241, 231);
+
+}
+
+.comment-body {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(159, 187, 241);
+}
+
+.trash-button {
+  max-width: 95px;
+  margin-left: 60px;
+  color: rgb(249, 241, 231);
+
+
 }

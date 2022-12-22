@@ -85,12 +85,18 @@ const [isLoaded, setIsLoaded] = useState(false)
       commentName = commentObj?.User?.username ? commentObj.User.username : personLoggedIn.username
       // console.log('this is the comment obj ----->', commentObj)
       return <div className='comment-div' key={i}>
-        {`${commentName} says: `}
-        {commentObj.body}
-        {thisIsMyComment ? <button onClick={
+        <div className='they-say'>
+          {`${commentName} says: `}
+          </div>
+          <div className='comment-body'>
+            {commentObj.body}
+            {thisIsMyComment ? <button className='trash-button' onClick={
     () => deleteThisComment(commentObj)}>
      <i className="fa-solid fa-trash-can"></i>
     </button> : null}
+          </div>
+
+
       </div>
 
      })}
