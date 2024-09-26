@@ -37,9 +37,8 @@
 * Sign-in/Log-in with your own creditionals or via our Demo User
 * Create, Read, Update, and Destroy Images with Error Handling
 * Create, Read, and Destroy Comments with Error Handling
-
+* AWS integration to upload and save your own images
 ### Things to develop in the future:
-* I would love to add AWS integration
 * I want to create personal Lockrs to allow users to keep track of mics that only they have added.
 
 
